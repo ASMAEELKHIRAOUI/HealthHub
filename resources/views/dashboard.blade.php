@@ -407,17 +407,10 @@
 
 
 
-
-
-
-
-
-
  
-                        <!-- table of matches -->
+                        <!-- table of products -->
                         <div class="row">
                             <div class="col-lg-12">
-                                <!-- <h2 class="title-1 m-b-25">Earnings By Items</h2> -->
                                 <div class="overview-wrap">
                                     <h2 class="title-1 m-b-25 me-4" id="products-list">Products</h2>
                                     <button class="btn me-3 logup text-light rounded fs-5" href="#productModal" data-bs-toggle="modal" id="color">
@@ -443,7 +436,6 @@
                                         <tbody>
                                                 <tr>
                                                     <td class="text-right">dfghjk</td>
-                                                    <!-- <td>05:57</td> -->
                                                     <td class="text-right">gfhjkl</td>
                                                     <td class="text-start">ghjkl</td>
                                                     <td class="text-right">gfhjk</td>
@@ -458,7 +450,8 @@
                                 </div>
                             </div>
                         </div>
-                     <!-- table of teames -->
+
+                     <!-- table of brands -->
                      <div class="row">
                             <div class="col-lg-12">
                                 <div class="overview-wrap">
@@ -488,10 +481,9 @@
                             </div>
                         </div>
 
-                        <!-- table of stads -->
+                        <!-- table of categories -->
                      <div class="row">
                             <div class="col-lg-12">
-                                <!-- <h2 class="title-1 m-b-25">Earnings By Items</h2> -->
                                 <div class="overview-wrap">
                                     <h2 class="title-1 m-b-25 me-4" id="categories-list">Categories</h2>
                                     <button class="btn me-3 logup text-light rounded fs-5" href="#categoryModal" data-bs-toggle="modal" id="color">
@@ -508,27 +500,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                    <tr>
-                                                        <td class="text-right">gfhjk</td>
-                                                        <td class="text-right">gfhjk</td>
-                                                        <td class="text-left d-flex justify-content-end"><a href="update.match.php?id="><i class="fa fa-edit text-primary me-2"></i></a><a href="delete.php?deletematch="><i class="fa fa-trash text-danger"></i></a></td>
-                                                    </tr>
+                                            @foreach ($categories as $category)
+                                            <tr>
+                                                <td class="text-right">{{ $category->name }}</td>
+                                                <td class="text-right">{{ $category->type }}</td>
+                                                <td class="text-left d-flex justify-content-end">
+                                                    <a href="update.category.php?id="><i class="fa fa-edit text-primary me-2"></i></a>
+                                                       
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit border border-0"><i class="fa fa-trash text-danger"></i></button>
+                                                </td>
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- table of reservations -->
+                        <!-- table of orders -->
                      <div class="row">
                             <div class="col-lg-12">
-                                <!-- <h2 class="title-1 m-b-25">Earnings By Items</h2> -->
                                 <div class="overview-wrap">
                                     <h2 class="title-1 m-b-25 me-4" id="orders-list">Orders</h2>
                                     <button class="btn me-3 logup text-light  rounded fs-5" href="#orderModal" data-bs-toggle="modal" id="color">
                                         <i class="fa fa-plus fs-5 me-2"></i>Add order</button>
                                 </div>
-                        <br>
+                                <br>
                                 <div class="table-responsive table--no-card mb-4" >
                                     <table class="table table-borderless table-striped table-earning" >
                                         <thead >
@@ -543,7 +543,6 @@
                                                 <td class="text-right">gfhjk</td>
                                                 <td class="text-right">gfhjk</td>
                                                 <td class="text-left d-flex justify-content-end"><a href="update.match.php?id="><i class="fa fa-edit text-primary me-2"></i></a><a href="delete.php?deletematch="><i class="fa fa-trash text-danger"></i></a></td>                                            </tr>
-
                                         </tbody>
                                     </table>
                                 </div>

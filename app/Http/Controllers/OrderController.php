@@ -15,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders= Order::all();
+        return view('dashboard')->with('orders', $orders);
     }
 
     /**
@@ -25,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard');
     }
 
     /**
@@ -36,7 +37,12 @@ class OrderController extends Controller
      */
     public function store(StoreorderRequest $request)
     {
-        //
+        $input = $request->all();
+
+        Order::create($input);
+        
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -47,7 +53,7 @@ class OrderController extends Controller
      */
     public function show(order $order)
     {
-        //
+        return view('dashboard',compact('order'));
     }
 
     /**
@@ -70,7 +76,10 @@ class OrderController extends Controller
      */
     public function update(UpdateorderRequest $request, order $order)
     {
-        //
+        $input = $request->all();
+        $order->update($input);
+      
+        return redirect()->route('dashboard')->with('success','Order updated successfully');
     }
 
     /**
@@ -81,6 +90,8 @@ class OrderController extends Controller
      */
     public function destroy(order $order)
     {
-        //
+        $order->delete();
+       
+        return redirect()->route('dashboard')->with('success','Order deleted successfully');
     }
 }

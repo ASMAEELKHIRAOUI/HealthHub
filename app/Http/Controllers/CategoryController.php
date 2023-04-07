@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories= Category::all();
+        return view('dashboard')->with('categories', $categories);
     }
 
     /**
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard');
     }
 
     /**
@@ -36,7 +37,11 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $input = $request->all();
+        Category::create($input);
+        
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -47,7 +52,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('dashboard',compact('category'));
     }
 
     /**
@@ -70,7 +75,15 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $input = $request->all();
+        if($image = $request->file('image')){
+            $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
+            $image->move('img/', $imageName);
+            $input['image'] = $imageName;
+        }else unset($input['image']);
+        $category->update($input);
+      
+        return redirect()->route('dashboard')->with('success','Category updated successfully');
     }
 
     /**
@@ -81,6 +94,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+       
+        return redirect()->route('dashboard')->with('success','Category deleted successfully');
     }
 }

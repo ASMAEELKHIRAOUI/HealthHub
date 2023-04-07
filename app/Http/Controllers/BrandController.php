@@ -15,7 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands= Brand::all();
+        return view('dashboard')->with('brands', $brands);
     }
 
     /**
@@ -25,7 +26,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard');
     }
 
     /**
@@ -36,7 +37,18 @@ class BrandController extends Controller
      */
     public function store(StorebrandRequest $request)
     {
-        //
+        $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'img/';
+            $imageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $imageName);
+            $input['image'] = "$imageName";
+        }
+        Brand::create($input);
+        
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -47,7 +59,7 @@ class BrandController extends Controller
      */
     public function show(brand $brand)
     {
-        //
+        return view('dashboard',compact('brand'));
     }
 
     /**
@@ -70,7 +82,15 @@ class BrandController extends Controller
      */
     public function update(UpdatebrandRequest $request, brand $brand)
     {
-        //
+        $input = $request->all();
+        if($image = $request->file('image')){
+            $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
+            $image->move('img/', $imageName);
+            $input['image'] = $imageName;
+        }else unset($input['image']);
+        $brand->update($input);
+      
+        return redirect()->route('dashboard')->with('success','Brand updated successfully');
     }
 
     /**
@@ -81,6 +101,8 @@ class BrandController extends Controller
      */
     public function destroy(brand $brand)
     {
-        //
+        $brand->delete();
+       
+        return redirect()->route('dashboard')->with('success','Brand deleted successfully');
     }
 }

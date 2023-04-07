@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products= Product::all();
+        return view('dashboard')->with('products', $products);
     }
 
     /**
@@ -25,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard');
     }
 
     /**
@@ -36,7 +37,18 @@ class ProductController extends Controller
      */
     public function store(StoreproductRequest $request)
     {
-        //
+        $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'img/';
+            $imageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $imageName);
+            $input['image'] = "$imageName";
+        }
+        Product::create($input);
+        
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -47,7 +59,7 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        //
+        return view('dashboard',compact('product'));
     }
 
     /**
@@ -70,7 +82,15 @@ class ProductController extends Controller
      */
     public function update(UpdateproductRequest $request, product $product)
     {
-        //
+        $input = $request->all();
+        if($image = $request->file('image')){
+            $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
+            $image->move('img/', $imageName);
+            $input['image'] = $imageName;
+        }else unset($input['image']);
+        $product->update($input);
+      
+        return redirect()->route('dashboard')->with('success','Product updated successfully');
     }
 
     /**
@@ -81,6 +101,8 @@ class ProductController extends Controller
      */
     public function destroy(product $product)
     {
-        //
+        $product->delete();
+       
+        return redirect()->route('dashboard')->with('success','Product deleted successfully');
     }
 }
