@@ -5,6 +5,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
@@ -39,23 +42,33 @@ Route::get('/details', function () {
 })->name('details');
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('categories', 'index');
+    // Route::get('categories', 'index');
     Route::get('categories/{category}', 'show');
     Route::middleware('auth:web')->group(function (){
-        Route::post('logout', 'logout');
-        Route::post('refresh', 'refresh');
-        Route::group(['controller' => CategoryController::class ,'prefix' => 'dashboard'], function () {
-            Route::get('', 'index');
+        Route::group(['controller' => BrandController::class ,'prefix' => 'brands'], function () {
+            Route::get('', 'index')->name('brands');
+            Route::post('', 'store')->middleware(['permission:add brand']);
+            Route::put('/{brand}', 'update')->middleware(['permission:edit brand']);
+            Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brand.destroy');
+        });
+        Route::group(['controller' => CategoryController::class ,'prefix' => 'categories'], function () {
+            Route::get('', 'index')->name('categories');
             Route::post('', 'store')->middleware(['permission:add category']);
             Route::put('/{category}', 'update')->middleware(['permission:edit category']);
             Route::delete('/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
         });
-        Route::group(['controller' => ProductController::class, 'prefix' => 'products'], function () {
+        Route::group(['controller' => OrderController::class ,'prefix' => 'orders'], function () {
+            Route::get('', 'index')->name('orders');
+            Route::post('', 'store')->middleware(['permission:add order']);
+            Route::put('/{order}', 'update')->middleware(['permission:edit order']);
+            Route::delete('/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
+        });
+        Route::group(['controller' => ProductController::class, 'prefix' => 'dashboard'], function () {
             Route::post('', 'store')->middleware(['permission:add product']);
             Route::put('/{product}', 'update')->middleware(['permission:edit product']);
             Route::delete('/{product}', 'destroy')->middleware(['permission:delete product']);
         });
-        Route::group(['controller' => UserController::class, 'prefix' => 'users'], function () {
+        Route::group(['controller' => UserController::class, 'prefix' => 'profile'], function () {
             Route::get('', 'index')->middleware(['permission:view profile']);
             Route::put('updateNameEmail/{user}', 'updateNameEmail');
             Route::put('updatePassword', 'updatePassword');

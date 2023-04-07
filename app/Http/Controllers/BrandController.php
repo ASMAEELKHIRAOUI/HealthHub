@@ -16,7 +16,7 @@ class BrandController extends Controller
     public function index()
     {
         $brands= Brand::all();
-        return view('dashboard')->with('brands', $brands);
+        return view('brands')->with('brands', $brands);
     }
 
     /**
@@ -26,7 +26,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('dashboard');
+        return view('brands');
     }
 
     /**
@@ -40,7 +40,7 @@ class BrandController extends Controller
         $input = $request->all();
 
         if ($image = $request->file('image')) {
-            $destinationPath = 'img/';
+            $destinationPath = 'img/brands';
             $imageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $imageName);
             $input['image'] = "$imageName";
@@ -48,7 +48,7 @@ class BrandController extends Controller
         Brand::create($input);
         
 
-        return redirect()->route('dashboard');
+        return redirect()->route('brands');
     }
 
     /**
@@ -59,7 +59,7 @@ class BrandController extends Controller
      */
     public function show(brand $brand)
     {
-        return view('dashboard',compact('brand'));
+        return view('brands',compact('brand'));
     }
 
     /**
@@ -85,12 +85,12 @@ class BrandController extends Controller
         $input = $request->all();
         if($image = $request->file('image')){
             $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
-            $image->move('img/', $imageName);
+            $image->move('img/brands', $imageName);
             $input['image'] = $imageName;
         }else unset($input['image']);
         $brand->update($input);
       
-        return redirect()->route('dashboard')->with('success','Brand updated successfully');
+        return redirect()->route('brands')->with('success','Brand updated successfully');
     }
 
     /**
@@ -103,6 +103,6 @@ class BrandController extends Controller
     {
         $brand->delete();
        
-        return redirect()->route('dashboard')->with('success','Brand deleted successfully');
+        return redirect()->route('brands')->with('success','Brand deleted successfully');
     }
 }

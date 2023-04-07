@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories= Category::all();
-        return view('dashboard')->with('categories', $categories);
+        return view('categories')->with('categories', $categories);
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard');
+        return view('categories');
     }
 
     /**
@@ -41,7 +41,7 @@ class CategoryController extends Controller
         Category::create($input);
         
 
-        return redirect()->route('dashboard');
+        return redirect()->route('categories');
     }
 
     /**
@@ -52,7 +52,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('dashboard',compact('category'));
+        return view('categories',compact('category'));
     }
 
     /**
@@ -83,7 +83,7 @@ class CategoryController extends Controller
         }else unset($input['image']);
         $category->update($input);
       
-        return redirect()->route('dashboard')->with('success','Category updated successfully');
+        return redirect()->route('categories')->with('success','Category updated successfully');
     }
 
     /**
@@ -96,6 +96,6 @@ class CategoryController extends Controller
     {
         $category->delete();
        
-        return redirect()->route('dashboard')->with('success','Category deleted successfully');
+        return redirect()->route('categories')->with('success','Category deleted successfully');
     }
 }

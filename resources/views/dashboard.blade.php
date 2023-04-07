@@ -1,6 +1,6 @@
-@include('layouts.head')
+@include('layouts.sidebar')
 
-<body>
+<body id="dashboard-body">
 <!-- add match form -->
 <div class="modal fade" id="productModal">
 		<div class="modal-dialog">
@@ -203,7 +203,7 @@
     
     <div class="page-wrapper">
         <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block" id="dashboard">
+        {{-- <aside class="menu-sidebar d-none d-lg-block" id="dashboard">
             <div class="menu-sidebar__content js-scrollbar1 ">
                 <nav class="navbar-sidebar pt-2">
                     <ul class="list-unstyled navbar__list ">
@@ -285,12 +285,12 @@
     </div>
   </div>
 </nav>
-        <!-- END OF NAVBAR -->
+        <!-- END OF NAVBAR --> --}}
 
 
 
-                    <!-- Statistiques-->
-                    <div class="main-content pt-5">
+                    <!-- Statistics-->
+                    <div class="main-content pt-5" id="dashboard-content">
                 <div class="section__content section__content ">
                     <div class="container-fluid" >
                         <div class="row">
@@ -409,7 +409,7 @@
 
  
                         <!-- table of products -->
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1 m-b-25 me-4" id="products-list">Products</h2>
@@ -449,10 +449,10 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                      <!-- table of brands -->
-                     <div class="row">
+                     {{-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1 m-b-25 me-4" id="brands-list">Brands</h2>
@@ -462,27 +462,29 @@
                         <br>
                                 <div class="table-responsive table--no-card mb-4" >
                                     <table class="table table-borderless table-striped table-earning" >
-                                        <thead >
-                                            <tr >
+                                        <thead>
+                                            <tr>
                                                 <th class="text-right">Image</th>
                                                 <th class="text-right">Name</th>
                                                 <th class="text-left"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($brands as $brand)
                                             <tr>
-                                                <td class="text-right"><img style="width:5rem" src="../assets/img/teams/"> </td>
-                                                <td class="text-right">gfhjk</td>
+                                                <td class="text-right"><img style="width:5rem" src="/img/brands/{{ $brand->img }}"> </td>
+                                                <td class="text-right">{{ $brand->name }}</td>
                                                 <td class="text-left d-flex justify-content-end"><a href="update.team.php?id="><i class="fa fa-edit text-primary me-2"></i></a><a href="delete.php?deleteteam="><i class="fa fa-trash text-danger"></i></a></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
+                            </div> --}}
+                        {{-- </div> --}}
 
                         <!-- table of categories -->
-                     <div class="row">
+                     {{-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1 m-b-25 me-4" id="categories-list">Categories</h2>
@@ -518,10 +520,10 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- table of orders -->
-                     <div class="row">
+                     {{-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1 m-b-25 me-4" id="orders-list">Orders</h2>
@@ -547,7 +549,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
     <!-- Js-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

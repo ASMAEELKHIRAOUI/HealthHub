@@ -991,3 +991,6 @@ ul {
 .add{
     background-color: #70a673;
 }
+.components{
+    height: 100vh;
+}

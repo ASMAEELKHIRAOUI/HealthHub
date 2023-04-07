@@ -1,12 +1,16 @@
 {
+  "public/img/signbg.jpg": {
+    "file": "assets/signbg-aa86af3f.jpg",
+    "src": "public/img/signbg.jpg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-c576c33d.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
   "resources/js/app.js": {
     "file": "assets/app-c3828592.js",
     "isEntry": true,
     "src": "resources/js/app.js"
-  },
-  "resources/sass/app.scss": {
-    "file": "assets/app-67dcdfd2.css",
-    "isEntry": true,
-    "src": "resources/sass/app.scss"
   }
 }

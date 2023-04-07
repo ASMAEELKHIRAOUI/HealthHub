@@ -16,7 +16,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders= Order::all();
-        return view('dashboard')->with('orders', $orders);
+        return view('orders')->with('orders', $orders);
     }
 
     /**
@@ -26,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('dashboard');
+        return view('orders');
     }
 
     /**
@@ -42,7 +42,7 @@ class OrderController extends Controller
         Order::create($input);
         
 
-        return redirect()->route('dashboard');
+        return redirect()->route('orders');
     }
 
     /**
@@ -53,7 +53,7 @@ class OrderController extends Controller
      */
     public function show(order $order)
     {
-        return view('dashboard',compact('order'));
+        return view('orders',compact('order'));
     }
 
     /**
@@ -79,7 +79,7 @@ class OrderController extends Controller
         $input = $request->all();
         $order->update($input);
       
-        return redirect()->route('dashboard')->with('success','Order updated successfully');
+        return redirect()->route('orders')->with('success','Order updated successfully');
     }
 
     /**
@@ -92,6 +92,6 @@ class OrderController extends Controller
     {
         $order->delete();
        
-        return redirect()->route('dashboard')->with('success','Order deleted successfully');
+        return redirect()->route('orders')->with('success','Order deleted successfully');
     }
 }

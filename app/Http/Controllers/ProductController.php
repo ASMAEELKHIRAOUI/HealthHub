@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products= Product::all();
-        return view('dashboard')->with('products', $products);
+        return view('products')->with('products', $products);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard');
+        return view('products');
     }
 
     /**
@@ -40,7 +40,7 @@ class ProductController extends Controller
         $input = $request->all();
 
         if ($image = $request->file('image')) {
-            $destinationPath = 'img/';
+            $destinationPath = 'img/products';
             $imageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $imageName);
             $input['image'] = "$imageName";
@@ -48,7 +48,7 @@ class ProductController extends Controller
         Product::create($input);
         
 
-        return redirect()->route('dashboard');
+        return redirect()->route('products');
     }
 
     /**
@@ -59,7 +59,7 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        return view('dashboard',compact('product'));
+        return view('products',compact('product'));
     }
 
     /**
@@ -85,12 +85,12 @@ class ProductController extends Controller
         $input = $request->all();
         if($image = $request->file('image')){
             $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
-            $image->move('img/', $imageName);
+            $image->move('img/products', $imageName);
             $input['image'] = $imageName;
         }else unset($input['image']);
         $product->update($input);
       
-        return redirect()->route('dashboard')->with('success','Product updated successfully');
+        return redirect()->route('products')->with('success','Product updated successfully');
     }
 
     /**
@@ -102,7 +102,7 @@ class ProductController extends Controller
     public function destroy(product $product)
     {
         $product->delete();
-       
-        return redirect()->route('dashboard')->with('success','Product deleted successfully');
+    
+        return redirect()->route('products')->with('success','Product deleted successfully');
     }
 }
