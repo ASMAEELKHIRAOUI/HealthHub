@@ -39,11 +39,11 @@ class BrandController extends Controller
     {
         $input = $request->all();
 
-        if ($image = $request->file('image')) {
+        if ($image = $request->file('img')) {
             $destinationPath = 'img/brands';
             $imageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $imageName);
-            $input['image'] = "$imageName";
+            $input['img'] = "$imageName";
         }
         Brand::create($input);
         
@@ -83,11 +83,11 @@ class BrandController extends Controller
     public function update(UpdatebrandRequest $request, brand $brand)
     {
         $input = $request->all();
-        if($image = $request->file('image')){
+        if($image = $request->file('img')){
             $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
             $image->move('img/brands', $imageName);
-            $input['image'] = $imageName;
-        }else unset($input['image']);
+            $input['img'] = $imageName;
+        }else unset($input['img']);
         $brand->update($input);
       
         return redirect()->route('brands')->with('success','Brand updated successfully');

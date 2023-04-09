@@ -12,16 +12,23 @@
             <table class="table table-borderless table-striped table-earning" >
                 <thead >
                     <tr >
-                        <th class="text-right">Product</th>
+                        <th class="text-right">Products</th>
                         <th class="text-right">Address</th>
+                        <th class="text-right">total</th>
+                        <th class="text-right">Status</th>
                         <th class="text-left"></th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($orders as $order)
                     <tr>
-                        <td class="text-right">gfhjk</td>
-                        <td class="text-right">gfhjk</td>
-                        <td class="text-left d-flex justify-content-end"><a href="update.match.php?id="><i class="fa fa-edit text-primary me-2"></i></a><a href="delete.php?deletematch="><i class="fa fa-trash text-danger"></i></a></td>                                            </tr>
+                        <td class="text-right">{{ $product->product }}</td>
+                        <td class="text-right">{{ $product->address }}</td>
+                        <td class="text-right">{{ $product->total }}</td>
+                        <td class="text-right">{{ $product->status }}</td>
+                        <td class="text-left d-flex justify-content-end"><a href="update.match.php?id="><i class="fa fa-edit text-primary me-2"></i></a><a href="delete.php?deletematch="><i class="fa fa-trash text-danger"></i></a></td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

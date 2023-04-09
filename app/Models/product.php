@@ -16,4 +16,17 @@ class product extends Model
         'stock',
         'img',
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function brand(){
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function order(){
+        return $this->hasMany(Order::class);
+    }
+
 }

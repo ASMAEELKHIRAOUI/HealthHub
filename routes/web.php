@@ -47,7 +47,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::middleware('auth:web')->group(function (){
         Route::group(['controller' => BrandController::class ,'prefix' => 'brands'], function () {
             Route::get('', 'index')->name('brands');
-            Route::post('', 'store')->middleware(['permission:add brand']);
+            Route::post('', 'store')->middleware(['permission:add brand'])->name('brands.store');
             Route::put('/{brand}', 'update')->middleware(['permission:edit brand']);
             Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brand.destroy');
         });

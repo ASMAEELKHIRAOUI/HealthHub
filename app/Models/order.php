@@ -13,5 +13,6 @@ class order extends Model
         'total',
         'ordered',
         'address',
+        'total',
     ];
 }
