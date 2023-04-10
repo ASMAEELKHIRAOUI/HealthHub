@@ -265,7 +265,7 @@ ul {
 
 .main-content {
     padding-top: 116px;
-    min-height: 100vh;
+    height: 100%;
 }
 
 @media (max-width: 991px) {

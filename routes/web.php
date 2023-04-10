@@ -45,6 +45,18 @@ Route::controller(AuthController::class)->group(function () {
     // Route::get('categories', 'index');
     Route::get('categories/{category}', 'show');
     Route::middleware('auth:web')->group(function (){
+        Route::group(['controller' => ProductController::class ,'prefix' => 'products'], function () {
+            Route::get('', 'index')->name('products');
+            Route::post('', 'store')->middleware(['permission:add product'])->name('products.store');
+            Route::put('/{product}', 'update')->middleware(['permission:edit product']);
+            Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('product.destroy');
+        });
+        Route::group(['controller' => BrandController::class ,'prefix' => 'brands'], function () {
+            Route::get('', 'index')->name('brands');
+            Route::post('', 'store')->middleware(['permission:add brand'])->name('brands.store');
+            Route::put('/{brand}', 'update')->middleware(['permission:edit brand']);
+            Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brand.destroy');
+        });
         Route::group(['controller' => BrandController::class ,'prefix' => 'brands'], function () {
             Route::get('', 'index')->name('brands');
             Route::post('', 'store')->middleware(['permission:add brand'])->name('brands.store');
@@ -53,7 +65,7 @@ Route::controller(AuthController::class)->group(function () {
         });
         Route::group(['controller' => CategoryController::class ,'prefix' => 'categories'], function () {
             Route::get('', 'index')->name('categories');
-            Route::post('', 'store')->middleware(['permission:add category']);
+            Route::post('', 'store')->middleware(['permission:add category'])->name('categories.store');
             Route::put('/{category}', 'update')->middleware(['permission:edit category']);
             Route::delete('/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
         });

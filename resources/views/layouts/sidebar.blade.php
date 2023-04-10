@@ -46,7 +46,7 @@
 <!-- NAVBAR  -->
     <nav class="navbar fixed-top d-lg-none" id="color">
         <div class="container-fluid" >
-            <a href="landingpage.php"><img class="logo" src="logo.png" style="height:40px; width:170px;"></a>
+            <a href="landingpage.php"><img class="logo" src="img/logo.png" style="height:40px; width:170px;"></a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon text-dark"></span>
             </button>

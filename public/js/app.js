@@ -1,3 +1,16 @@
+let categorySelect = document.getElementById('category-select');
+let category = document.getElementById('category');
+categorySelect.style.display = "block";
+category.addEventListener("change", function() {
+    // If the radio button is selected, hide the select form
+    if (category.checked) {
+        categorySelect.style.display = "none";
+    } else {
+      // Otherwise, show the select form
+      categorySelect.style.display = "block";
+    }
+});
+
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 

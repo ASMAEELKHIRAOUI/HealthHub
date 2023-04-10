@@ -1,82 +1,5 @@
 @include('layouts.sidebar')
-<div class="modal fade" id="productModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="../scripts.php/crudadmin.script.php" method="POST" id="form" data-parsley-validate>
-                <div class="modal-header">
-                    <h5 class="modal-title">Add product</h5>
-                    <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
-                </div>
-
-
-
-                <div class="modal-body">
-        
-                        <input type="hidden" name="id" >
-
-                        <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" name="Name"  class="form-control"  required/>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="floatingTextarea" name="description"></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Brand</label>
-                            <select class="form-select" name="brand" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                    <option value="">sdfghjk</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <select class="form-select" name="category" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="">dfghjk</option>
-                            </select>
-                            
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Promotion</label>
-                            <input type="number" name="promotion" class="form-control"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Stock</label>
-                            <input type="number" name="stock" class="form-control" required/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="number" name="price" class="form-control" required/>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image</label>
-                            <input class="form-control" name="image" type="file" id="formFile">
-                        </div>
-                    
-                </div>
-
-
-
-
-
-
-
-                
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-white border" data-bs-dismiss="modal" id="cancel-btn">Cancel</a>
-                    <button type="submit" name="SaveMatch" class="color text-light border-white p-2 rounded" id="save-btn">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+@include('productmodal')
 
 <div class="p-5" style="height: 100vh">
 <div class="row">
@@ -104,6 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     @foreach ($products as $product)
                         <tr>
                             <td class="text-right"><img src="img/products/{{ $product->img }}" alt="" style="height:50px; width:50px;"></td>
