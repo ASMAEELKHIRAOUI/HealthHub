@@ -62,7 +62,8 @@ Route::controller(AuthController::class)->group(function () {
         Route::group(['controller' => CategoryController::class, 'prefix' => 'categories'], function () {
             Route::get('', 'index')->name('categories');
             Route::post('', 'store')->middleware(['permission:add category'])->name('categories.store');
-            Route::put('/{category}', 'update')->middleware(['permission:edit category']);
+            Route::get('/{category}', 'edit')->middleware(['permission:edit category'])->name('category.edit');
+            Route::put('/{category}', 'update')->middleware(['permission:edit category'])->name('category.update');
             Route::delete('/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
         });
         Route::group(['controller' => OrderController::class, 'prefix' => 'orders'], function () {

@@ -18,16 +18,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $categoryy)
+                    @foreach ($categories as $category)
                     <tr>
-                        <td class="text-right">{{ $categoryy->name }}</td>
+                        <td class="text-right">{{ $category->name }}</td>
                         <td class="text-left d-flex justify-content-end">
-                            <a href="update.category.php?id="><i class="fa fa-edit text-primary me-2"></i></a>
+                            <form action="{{ route('category.destroy',$category->id) }}" method="POST">
+                                <a href="{{ route('category.edit',$category->id) }}">
+                                    <i class="fa fa-edit text-primary me-2"></i>
+                                </a>
                                
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit border border-0"><i class="fa fa-trash text-danger"></i></button>
+                                @csrf
+                                @method('DELETE')
+    
+                                <button type="submit border border-0">
+                                    <i class="fa fa-trash text-danger"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -54,12 +60,18 @@
                         <td class="text-right">{{ $subcategory->category->name }}
                         </td>
                         <td class="text-left d-flex justify-content-end">
-                            <a href="update.category.php?id="><i class="fa fa-edit text-primary me-2"></i></a>
+                            <form action="{{ route('category.destroy',$subcategory->id) }}" method="POST">
+                                <a href="{{ route('category.edit',$subcategory->id) }}">
+                                    <i class="fa fa-edit text-primary me-2"></i>
+                                </a>
                                
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit border border-0"><i class="fa fa-trash text-danger"></i></button>
+                                @csrf
+                                @method('DELETE')
+    
+                                <button type="submit border border-0">
+                                    <i class="fa fa-trash text-danger"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
