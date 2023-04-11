@@ -1,14 +1,13 @@
 @include('layouts.sidebar')
 
 {{-- @dd($brand) --}}
-<div class="modal-content">
-    <form action="{{ route('brands.update', $brand) }}" method="POST" id="form" data-parsley-validate>
+<div class="edit-modal-content p-5">
+    <form action="{{ route('brands.update', $brand) }}" method="POST" id="edit-form" data-parsley-validate>
 
         @csrf
         @method('PUT')
         <div class="modal-header">
-            <h5 class="modal-title">Add brand</h5>
-            <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+            <h3 class="modal-title text-dark py-4">Edit brand</h3>
         </div>
         <div class="modal-body">
             <input type="hidden" name="id">

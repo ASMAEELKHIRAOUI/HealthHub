@@ -1,7 +1,7 @@
 <div class="modal fade" id="categoryModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('categories.store')}}" method="POST" id="form" data-parsley-validate>
+            <form action="{{route('categories.store')}}" method="POST" id="add-form" data-parsley-validate>
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title">Add category</h5>
@@ -34,7 +34,7 @@
                         @php
                         $categories = App\Models\Category::all()->where('type',1);
                         @endphp
-                        <div id="category-select">
+                        <div id="category-select" class="py-3">
                             <label class="form-label">Category</label>
                             <select class="form-select" name="category_id" aria-label="Default select example">
                                 <option value="" selected>Open this select menu</option>

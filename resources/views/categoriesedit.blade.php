@@ -1,12 +1,11 @@
 @include('layouts.sidebar')
 
-        <div class="modal-content">
-            <form action="{{ route('category.update', $category) }}" method="POST" id="form" data-parsley-validate>
+        <div class="edit-modal-content p-5">
+            <form action="{{ route('category.update', $category) }}" method="POST" id="edit-form" data-parsley-validate>
                 @csrf
                 @method('PUT')
                 <div class="modal-header">
-                    <h5 class="modal-title">Add category</h5>
-                    <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+                    <h3 class="modal-title text-dark py-4">Edit category</h3>
                 </div>
                 <div class="modal-body">
         
@@ -35,7 +34,7 @@
                         @php
                         $categories = App\Models\Category::all()->where('type',1);
                         @endphp
-                        <div id="category-select">
+                        <div id="category-select" class="py-3">
                             <label class="form-label">Category</label>
                             <select class="form-select" name="category_id" aria-label="Default select example">
                                 <option value="">Open this select menu</option>

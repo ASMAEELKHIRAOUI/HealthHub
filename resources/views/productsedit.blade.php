@@ -1,11 +1,11 @@
 @include('layouts.sidebar')
-<div class="modal-content">
-    <form action="{{ route('products.update', $product) }}" method="POST" id="form" data-parsley-validate>
+<div class="edit-modal-content p-5">
+    <form action="{{ route('products.update', $product) }}" method="POST" id="edit-form" data-parsley-validate>
         @csrf
         @method('PUT')
 
         <div class="modal-header">
-            <h5 class="modal-title">Edit product</h5>
+            <h3 class="modal-title text-dark py-4">Edit product</h3>
         </div>
   <div class="modal-body">
 

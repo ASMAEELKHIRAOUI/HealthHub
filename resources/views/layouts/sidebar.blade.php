@@ -42,7 +42,7 @@
 </aside>
 <!-- END MENU SIDEBAR-->
 <!-- PAGE CONTAINER-->
-<div class="page-container top-0">
+<div class="page-container top-0" style="height:100vh;">
 <!-- NAVBAR  -->
     <nav class="navbar fixed-top d-lg-none" id="color">
         <div class="container-fluid" >
