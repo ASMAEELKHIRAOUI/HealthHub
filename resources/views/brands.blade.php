@@ -23,7 +23,19 @@
                     <tr>
                         <td class="text-right"><img style="width:5rem" src="/img/brands/{{ $brand->img }}"> </td>
                         <td class="text-right">{{ $brand->name }}</td>
-                        <td class="text-left d-flex justify-content-end"><a href="update.team.php?id="><i class="fa fa-edit text-primary me-2"></i></a><a href="delete.php?deleteteam="><i class="fa fa-trash text-danger"></i></a></td>
+                        <td class="text-left d-flex justify-content-end">
+                            <form action="{{ route('brands.destroy',$brand->id) }}" method="POST">
+                                <a href="{{ route('brands.edit',$brand->id) }}">
+                                    <i class="fa fa-edit text-primary me-2"></i>
+                                </a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <i class="fa fa-trash text-danger"></i>
+                                </button>
+                            </form>
+                            
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

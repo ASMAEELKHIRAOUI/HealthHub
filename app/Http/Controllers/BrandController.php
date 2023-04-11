@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\brand;
+use App\Models\Brand;
 use App\Http\Requests\StorebrandRequest;
 use App\Http\Requests\UpdatebrandRequest;
 
@@ -15,7 +15,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands= Brand::all();
+        $brands = Brand::all();
         return view('brands')->with('brands', $brands);
     }
 
@@ -46,7 +46,7 @@ class BrandController extends Controller
             $input['img'] = "$imageName";
         }
         Brand::create($input);
-        
+
 
         return redirect()->route('brands');
     }
@@ -59,7 +59,7 @@ class BrandController extends Controller
      */
     public function show(brand $brand)
     {
-        return view('brands',compact('brand'));
+        return view('brands', compact('brand'));
     }
 
     /**
@@ -68,10 +68,11 @@ class BrandController extends Controller
      * @param  \App\Models\brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(brand $brand)
+    public function edit(Brand $brand)
     {
-        //
+        return view('brandsedit', ['brand' => $brand]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -83,14 +84,14 @@ class BrandController extends Controller
     public function update(UpdatebrandRequest $request, brand $brand)
     {
         $input = $request->all();
-        if($image = $request->file('img')){
+        if ($image = $request->file('img')) {
             $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
             $image->move('img/brands', $imageName);
             $input['img'] = $imageName;
-        }else unset($input['img']);
+        } else unset($input['img']);
         $brand->update($input);
-      
-        return redirect()->route('brands')->with('success','Brand updated successfully');
+
+        return redirect()->route('brands')->with('success', 'Brand updated successfully');
     }
 
     /**
@@ -102,7 +103,7 @@ class BrandController extends Controller
     public function destroy(brand $brand)
     {
         $brand->delete();
-       
-        return redirect()->route('brands')->with('success','Brand deleted successfully');
+
+        return redirect()->route('brands')->with('success', 'Brand deleted successfully');
     }
 }

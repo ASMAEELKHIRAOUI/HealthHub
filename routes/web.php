@@ -19,7 +19,8 @@ use App\Http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => ['auth']], function() {
+
+Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
@@ -44,32 +45,27 @@ Route::get('/details', function () {
 Route::controller(AuthController::class)->group(function () {
     // Route::get('categories', 'index');
     Route::get('categories/{category}', 'show');
-    Route::middleware('auth:web')->group(function (){
-        Route::group(['controller' => ProductController::class ,'prefix' => 'products'], function () {
+    Route::middleware('auth:web')->group(function () {
+        Route::group(['controller' => ProductController::class, 'prefix' => 'products'], function () {
             Route::get('', 'index')->name('products');
             Route::post('', 'store')->middleware(['permission:add product'])->name('products.store');
             Route::put('/{product}', 'update')->middleware(['permission:edit product']);
             Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('product.destroy');
         });
-        Route::group(['controller' => BrandController::class ,'prefix' => 'brands'], function () {
+        Route::group(['controller' => BrandController::class, 'prefix' => 'brands'], function () {
             Route::get('', 'index')->name('brands');
             Route::post('', 'store')->middleware(['permission:add brand'])->name('brands.store');
-            Route::put('/{brand}', 'update')->middleware(['permission:edit brand']);
-            Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brand.destroy');
+            Route::get('/{brand}', 'edit')->middleware(['permission:edit brand'])->name('brands.edit');
+            Route::put('/{brand}', 'update')->middleware(['permission:edit brand'])->name('brands.update');
+            Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brands.destroy');
         });
-        Route::group(['controller' => BrandController::class ,'prefix' => 'brands'], function () {
-            Route::get('', 'index')->name('brands');
-            Route::post('', 'store')->middleware(['permission:add brand'])->name('brands.store');
-            Route::put('/{brand}', 'update')->middleware(['permission:edit brand']);
-            Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brand.destroy');
-        });
-        Route::group(['controller' => CategoryController::class ,'prefix' => 'categories'], function () {
+        Route::group(['controller' => CategoryController::class, 'prefix' => 'categories'], function () {
             Route::get('', 'index')->name('categories');
             Route::post('', 'store')->middleware(['permission:add category'])->name('categories.store');
             Route::put('/{category}', 'update')->middleware(['permission:edit category']);
             Route::delete('/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
         });
-        Route::group(['controller' => OrderController::class ,'prefix' => 'orders'], function () {
+        Route::group(['controller' => OrderController::class, 'prefix' => 'orders'], function () {
             Route::get('', 'index')->name('orders');
             Route::post('', 'store')->middleware(['permission:add order']);
             Route::put('/{order}', 'update')->middleware(['permission:edit order']);
@@ -87,10 +83,9 @@ Route::controller(AuthController::class)->group(function () {
             Route::delete('', 'destroy');
         });
 
-        Route::group(['controller' => RoleController::class], function() {
+        Route::group(['controller' => RoleController::class], function () {
             Route::post('assign-role/{id}', 'assignRole')->middleware('permission:manage roles');
             Route::post('remove-role/{id}', 'removeRole')->middleware('permission:manage roles');
         });
-
     });
 });
