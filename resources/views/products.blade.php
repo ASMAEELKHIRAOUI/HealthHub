@@ -38,7 +38,18 @@
                             <td class="text-right">{{ $product->promotion }}</td>
                             <td class="text-right">{{ $product->stock }}</td>
                             <td class="text-right">{{ $product->price }}</td>
-                            <td class="text-left"><a href="update.match.php?id="><i class="fa fa-edit text-primary me-2"></i></a><a href="delete.php?deletematch="><i class="fa fa-trash text-danger me-2"></i></a></td>
+                            <td class="text-left">
+                                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                                    <a href="{{ route('products.edit',$product->id) }}">
+                                        <i class="fa fa-edit text-primary me-2"></i>
+                                    </a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </button>
+                                </form>
+                                </td>
                         </tr>
                     @endforeach
                 </tbody>

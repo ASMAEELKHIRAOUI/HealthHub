@@ -70,7 +70,7 @@ class ProductController extends Controller
      */
     public function edit(product $product)
     {
-        //
+        return view('productsedit', ['product' => $product]);
     }
 
     /**

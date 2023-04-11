@@ -74,8 +74,9 @@ Route::controller(AuthController::class)->group(function () {
         });
         Route::group(['controller' => ProductController::class, 'prefix' => 'dashboard'], function () {
             Route::post('', 'store')->middleware(['permission:add product']);
-            Route::put('/{product}', 'update')->middleware(['permission:edit product']);
-            Route::delete('/{product}', 'destroy')->middleware(['permission:delete product']);
+            Route::get('/{product}', 'edit')->middleware(['permission:edit product'])->name('products.edit');
+            Route::put('/{product}', 'update')->middleware(['permission:edit product'])->name('products.update');
+            Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('products.destroy');
         });
         Route::group(['controller' => UserController::class, 'prefix' => 'profile'], function () {
             Route::get('', 'index')->middleware(['permission:view profile']);
