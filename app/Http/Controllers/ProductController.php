@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 
 class ProductController extends Controller
 {
@@ -15,8 +17,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products= Product::all();
+        $products = Product::all();
+
+        if (Route::currentRouteName() == 'welcome'){
+            return view('welcome')->with('products', $products);
+        }
         return view('products')->with('products', $products);
+    }
+
+    public function details(product $product)
+    {
+        return view('details',compact('product'));
     }
 
     /**
@@ -39,11 +50,13 @@ class ProductController extends Controller
     {
         $input = $request->all();
 
-        if ($image = $request->file('image')) {
+        // dd($request['img']);
+
+        if ($image = $input['img']) {
             $destinationPath = 'img/products';
             $imageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $imageName);
-            $input['image'] = "$imageName";
+            $input['img'] = "$imageName";
         }
         Product::create($input);
         

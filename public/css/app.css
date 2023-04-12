@@ -41,13 +41,15 @@ p {
     font-size: 14px;
 }
 
-.btn {
+.btn{
     color: #70a673;
     border: 1px solid #70a673;
     border-radius: 20px;
-    width: 170px;
     padding: 8px;
     font-weight: bold;
+}
+.btn_sign{
+    width: 170px;
 }
 
 .btn:hover {

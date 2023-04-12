@@ -4,45 +4,55 @@
 <div class="container p-5">
     <div class="d-flex row">
         <div class="col-6">
-            <img src="img/signbg.jpg" style="height: 500px; width: 500px;" class="rounded-4 ms-5">
+            <img src="img/products/{{ $product->img }}" style="height: 500px; width: 500px;" class="rounded-4 ms-5">
         </div>
         <div class="col-6 my-5">
-            <h4>
-                ESTHEDERM MINCEUR LAIT HYDRATANT ANTI-RELACHEMENT 200 ML ACHETE + ESTHEDERM BAUME DE MODELAGE 200 ML OFFERT
-            </h4>
             <h3>
-                Brand
+                {{ $product->name }}
             </h3>
+            <h4>
+                {{ $product->brand->name }}
+            </h4>
             <hr>
+            @if($product->promotion > 0)
             <div class="d-flex justify-content-between">
                 <div class="d-flex">
                     <h1>
-                        29.99$
+                        {{ $product->price - (($product->promotion * $product->price)/100) }}$
                     </h1>
-                    <p class="text-decoration-line-through text-secondary ms-5 mt-2 fs-5">49.99$</p>
+                    <p class="text-decoration-line-through text-secondary ms-5 mt-2 fs-5">{{ $product->price }}$</p>
                 </div>
                 
                 <div class="promo bg-danger rounded-end-circle fs-5 text-light px-3">
-                    -15%
+                    -{{ $product->promotion }}%
                 </div>
             </div>
+            @else
+            <div class="d-flex justify-content-between">
+                <h1>
+                    {{ $product->price }}$
+                </h1>
+            </div>
+            @endif
             <hr>
+            @if($product->stock > 0)
             <div class="text-success">
                 In stock
             </div>
+            @else 
+            <div class="text-danger">
+                Out of stock
+            </div>
+            @endif
             <hr>
-            <div class="d-flex">
+            <div class="d-flex justify-content-between">
                 <div>
-                    <input type="number" value="1" class="w-25 rounded p-2 mt-1">
+                    <input type="number" value="1" min="1" max="{{ $product->stock }}" class="rounded p-2">
                 </div>
-                <div>
+                <div class="">
                     <button class="add btn me-3 text-light rounded fs-5">Add to cart <i class="bi bi-cart-dash"></i></button>
                 </div>
             </div>
-            
-            
-            
-
         </div>
     </div>
     <div class="container mt-5 p-5">
@@ -50,10 +60,8 @@
             Description
         </h4>
         <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            {{ $product->description }}
         </div>
     </div>
 </div>
-
-
 @endsection

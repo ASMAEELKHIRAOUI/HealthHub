@@ -68,7 +68,7 @@
                 </label>
             </div>
             <div class="row justify-content-center mt-4">
-                <button class="btn" name="signin" type="submit">{{ __('SIGN IN NOW') }}</button>
+                <button class="btn btn_sign" name="signin" type="submit">{{ __('SIGN IN NOW') }}</button>
                 @if (Route::has('password.request'))
                     <a class="link d-flex justify-content-center mt-4" href="{{ route('password.request') }}">
                         {{ __('Forgot Your Password?') }}

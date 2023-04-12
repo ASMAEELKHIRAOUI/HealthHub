@@ -9,7 +9,7 @@
                     <a href="{{ url('/') }}" class="text-white text-decoration-none"><img class="logo" src="img/logo.png" style="height:50px; width:170px;"></a>
                 </li>
                 <li class="active has-sub">
-                    <a href="landingpage.php" class="text-white text-decoration-none">
+                    <a href="{{ url('/') }}" class="text-white text-decoration-none">
                         <i class="fa fa-home"></i>Home</a>
                 </li>
                 <li class="active has-sub">
@@ -46,7 +46,7 @@
 <!-- NAVBAR  -->
     <nav class="navbar fixed-top d-lg-none" id="color">
         <div class="container-fluid" >
-            <a href="landingpage.php"><img class="logo" src="img/logo.png" style="height:40px; width:170px;"></a>
+            <a href="{{ url('/') }}"><img class="logo" src="img/logo.png" style="height:40px; width:170px;"></a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon text-dark"></span>
             </button>
@@ -58,7 +58,7 @@
             <div class="offcanvas-body" id="color">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="landingpage.php"><i class="fa fa-home me-2"></i>Home</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ url('/') }}"><i class="fa fa-home me-2"></i>Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active text-light" aria-current="page" href="#statistics"><i class="fa-solid fa-chart-simple me-2"></i>Statistics</a>
