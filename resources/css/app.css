@@ -45,14 +45,19 @@ p {
     font-size: 14px;
 }
 
-.btn {
+.btn{
     color: #70a673;
     border: 1px solid #70a673;
     border-radius: 20px;
-    width: 220px;
     padding: 8px;
+    width: 60px;
     font-weight: bold;
 }
+.big_btn{
+    width: 170px;
+}
+
+
 
 .btn:hover {
     background-color: #70a673;

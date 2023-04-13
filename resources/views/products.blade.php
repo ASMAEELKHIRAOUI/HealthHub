@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="overview-wrap">
             <h2 class="title-1 m-b-25 me-4" id="products-list">Products</h2>
-            <button class="btn me-3 logup text-light rounded fs-5" href="#productModal" data-bs-toggle="modal" id="color">
+            <button class="btn big_btn me-3 logup text-light rounded fs-5" href="#productModal" data-bs-toggle="modal" id="color">
                 <i class="fa fa-plus fs-5 me-2"></i>Add product</button>
         </div>
 

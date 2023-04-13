@@ -26,8 +26,8 @@
 
         </div>
         <div class="modal-footer">
-            <a href="#" class="btn btn-white border" data-bs-dismiss="modal" id="cancel-btn">Cancel</a>
-            <button type="submit" name="SaveBrand" class="color text-light border-white p-2 rounded" id="save-btn">Save</button>
+            <a href="#" class="btn big_btn btn-white border" data-bs-dismiss="modal" id="cancel-btn">Cancel</a>
+            <button type="submit" name="SaveBrand" class="color big_btn text-light border-white p-2 rounded" id="save-btn">Save</button>
         </div>
     </form>
 </div>

@@ -73,7 +73,7 @@
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
-                <div class="row justify-content-center mt-4"><button type="submit" class="btn btn_sign" name="signup">{{ __('SIGNUP') }}</button></div>
+                <div class="row justify-content-center mt-4"><button type="submit" class="btn big_btn" name="signup">{{ __('SIGNUP') }}</button></div>
                 <div class="privacy text-center mt-4">
                     By clicking on "SIGN UP" you agree to <a class="link" href="#">Privacy Policy</a>.
                 </div>

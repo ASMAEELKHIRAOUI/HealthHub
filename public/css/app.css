@@ -46,6 +46,7 @@ p {
     border: 1px solid #70a673;
     border-radius: 20px;
     padding: 8px;
+    width: 30px;
     font-weight: bold;
 }
 .btn_sign{

@@ -4,12 +4,12 @@
     "src": "public/img/signbg.jpg"
   },
   "resources/css/app.css": {
-    "file": "assets/app-53c5f29e.css",
+    "file": "assets/app-8c17a281.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-56ff0296.js",
+    "file": "assets/app-4ed993c7.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

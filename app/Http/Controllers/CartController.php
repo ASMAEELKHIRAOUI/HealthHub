@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cart;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorecartRequest;
 use App\Http\Requests\UpdatecartRequest;
 
@@ -15,7 +16,15 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $carts = Cart::all()->where('user_id',$user->id);
+        $subtotal=0;
+        $sum_items=0;
+        foreach($carts as $cart){
+            $subtotal += $cart->quantity * ($cart->product->price - (($cart->product->promotion * $cart->product->price)/100));
+            $sum_items++;
+        }
+        return view('cart')->with(['carts' => $carts, 'subtotal' => $subtotal, 'sum_items' => $sum_items]);
     }
 
     /**
@@ -25,7 +34,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        return view('cart');
     }
 
     /**
@@ -36,7 +45,11 @@ class CartController extends Controller
      */
     public function store(StorecartRequest $request)
     {
-        //
+        $input = $request->all();
+        Cart::create($input);
+        
+
+        return redirect()->route('cart');
     }
 
     /**
@@ -68,9 +81,15 @@ class CartController extends Controller
      * @param  \App\Models\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatecartRequest $request, cart $cart)
+    public function update(UpdatecartRequest $request)
     {
-        //
+        $cart = Cart::find($request->id);
+
+        $cart->quantity = $request->quantity;
+
+        $cart->save();
+
+        return response()->json(['updated' => $cart]);
     }
 
     /**

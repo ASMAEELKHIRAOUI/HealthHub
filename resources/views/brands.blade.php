@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="overview-wrap">
             <h2 class="title-1 m-b-25 me-4" id="brands-list">Brands</h2>
-            <button class="btn me-3 logup text-light rounded fs-5" href="#brandModal" data-bs-toggle="modal" id="color">
+            <button class="btn big_btn me-3 logup text-light rounded fs-5" href="#brandModal" data-bs-toggle="modal" id="color">
                 <i class="fa fa-plus fs-5 me-2"></i>Add brand</button>
         </div>
         <br>

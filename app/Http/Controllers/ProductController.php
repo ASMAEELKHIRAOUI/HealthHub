@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\product;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 class ProductController extends Controller
@@ -18,6 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+        $user = Auth::user();
 
         if (Route::currentRouteName() == 'welcome'){
             return view('welcome')->with('products', $products);
@@ -27,7 +28,8 @@ class ProductController extends Controller
 
     public function details(product $product)
     {
-        return view('details',compact('product'));
+        $user = Auth::user();
+        return view('details',compact('product','user'));
     }
 
     /**

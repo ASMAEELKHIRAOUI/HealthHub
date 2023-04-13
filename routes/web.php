@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -31,12 +32,13 @@ Route::group(['middleware' => ['auth']], function () {
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
+// Route::get('/cart', function () {
+//     return view('cart');
+// })->name('cart');
 
 Route::get('/', [ProductController::class, 'index'])->name('welcome');
 Route::get('details/{product}', [ProductController::class, 'details'])->name('product.detail');
+// Route::get('cart', [CartController::class, 'index'])->name('cart');
 
 
 Route::controller(AuthController::class)->group(function () {
@@ -81,6 +83,10 @@ Route::controller(AuthController::class)->group(function () {
             Route::put('updateNameEmail/{user}', 'updateNameEmail');
             Route::put('updatePassword', 'updatePassword');
             Route::delete('', 'destroy');
+        });
+        Route::group(['controller' => CartController::class], function () {
+            Route::get('cart', 'index')->name('cart');
+            Route::post('cart', 'store')->name('cart.store');
         });
 
         Route::group(['controller' => RoleController::class], function () {

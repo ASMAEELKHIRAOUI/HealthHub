@@ -77,11 +77,6 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $input = $request->all();
-        if($image = $request->file('image')){
-            $imageName = date('YmdHis') . '.' . $image->getClientOriginalExtension();
-            $image->move('img/', $imageName);
-            $input['image'] = $imageName;
-        }else unset($input['image']);
         $category->update($input);
       
         return redirect()->route('categories')->with('success','Category updated successfully');

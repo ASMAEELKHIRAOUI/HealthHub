@@ -2,7 +2,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="container p-5">
+    <form action="{{route('cart.store')}}" method="POST">
+        @csrf
     <div class="d-flex row">
+        
         <div class="col-6">
             <img src="img/products/{{ $product->img }}" style="height: 500px; width: 500px;" class="rounded-4 ms-5">
         </div>
@@ -13,6 +16,8 @@
             <h4>
                 {{ $product->brand->name }}
             </h4>
+            <input type="hidden" value="{{ $product->id }}" name="product_id">
+            <input type="hidden" value="{{ $user->id }}" name="user_id">
             <hr>
             @if($product->promotion > 0)
             <div class="d-flex justify-content-between">
@@ -47,10 +52,10 @@
             <hr>
             <div class="d-flex justify-content-between">
                 <div>
-                    <input type="number" value="1" min="1" max="{{ $product->stock }}" class="rounded p-2">
+                    <input type="number" value="1" min="1" max="{{ $product->stock }}" class="rounded p-2" name="quantity">
                 </div>
                 <div class="">
-                    <button class="add btn me-3 text-light rounded fs-5">Add to cart <i class="bi bi-cart-dash"></i></button>
+                    <button class="add btn me-3 text-light rounded fs-5" type="submit">Add to cart <i class="bi bi-cart-dash"></i></button>
                 </div>
             </div>
         </div>
@@ -62,6 +67,7 @@
         <div>
             {{ $product->description }}
         </div>
-    </div>
+    
+    </div></form>
 </div>
 @endsection
