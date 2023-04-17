@@ -42,6 +42,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $editBrand = 'edit brand';
         $deleteBrand = 'delete brand';
 
+        $addOrder = 'add order';
+        $editOrder = 'edit order';
+        $deleteOrder = 'delete order';
+
         $manageRoles = 'manage roles';
         $managePermissions = 'manage permissions';
 
@@ -70,6 +74,10 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => $editBrand]);
         Permission::create(['name' => $deleteBrand]);
 
+        Permission::create(['name' => $addOrder]);
+        Permission::create(['name' => $editOrder]);
+        Permission::create(['name' => $deleteOrder]);
+
         // Define roles available
         $admin = 'admin';
         $seller = 'seller';
@@ -87,6 +95,9 @@ class RolesAndPermissionsSeeder extends Seeder
             $viewAllOrders_archives,
             $viewOwnCart,
             $viewAllCarts,
+            $addOrder,
+            $editOrder,
+            $deleteOrder,
         ]);
 
         Role::create(['name' => $user])->givePermissionTo([
@@ -94,6 +105,7 @@ class RolesAndPermissionsSeeder extends Seeder
             $placeOrder,
             $viewOwnOrder_archive,
             $viewOwnCart,
+            $addOrder,
         ]);
     }
 }

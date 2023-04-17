@@ -8,7 +8,7 @@
             <img src="img/products/{{ $product->img }}" alt="" style="height:300px;width:275px;border-radius:20px" class="p-2">
             <h1 class="fs-2">{{ $product->name }}</h1>
             <p class="">{{ $product->description }}</p>
-            <p class="">{{ $product->price - (($product->promotion * $product->price)/100) }}</p>
+            <p class="">{{ $product->price - (($product->promotion * $product->price)/100) }}$</p>
         </div>
     </a>
     @endforeach

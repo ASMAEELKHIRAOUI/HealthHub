@@ -6,6 +6,7 @@ use App\Models\cart;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorecartRequest;
 use App\Http\Requests\UpdatecartRequest;
+use Illuminate\Support\Facades\Route;
 
 class CartController extends Controller
 {
@@ -23,6 +24,9 @@ class CartController extends Controller
         foreach($carts as $cart){
             $subtotal += $cart->quantity * ($cart->product->price - (($cart->product->promotion * $cart->product->price)/100));
             $sum_items++;
+        }
+        if (Route::currentRouteName() == 'checkout'){
+            return view('checkout')->with(['carts' => $carts, 'subtotal' => $subtotal, 'sum_items' => $sum_items, 'user' => $user]);
         }
         return view('cart')->with(['carts' => $carts, 'subtotal' => $subtotal, 'sum_items' => $sum_items]);
     }

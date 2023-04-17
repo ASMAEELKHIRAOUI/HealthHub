@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\order;
+use App\Models\Cart;
+use App\Models\OrderItems;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreorderRequest;
 use App\Http\Requests\UpdateorderRequest;
 
@@ -39,9 +42,32 @@ class OrderController extends Controller
     {
         $input = $request->all();
 
-        Order::create($input);
-        
 
+        $order=Order::create($input);
+
+        $userId = Auth::user()->id;
+        $cartItems = Cart::where('user_id', $userId)
+            ->with('product')
+            ->get()
+            ->toArray();
+        //     return $cartItems;
+        
+        $orderId = $order->id;
+
+        for($i = 0; $i < count($cartItems); $i++)
+        {
+            $total= $cartItems[$i]['quantity'] * ($cartItems[$i]['product']['price'] - (($cartItems[$i]['product']['promotion'] * $cartItems[$i]['product']['price'])/100));
+            OrderItems::create([
+                'order_id' => $orderId,
+                'product_id' => $cartItems[$i]['product_id'],
+                'quantity' => $cartItems[$i]['quantity'],
+                'total' => $total,
+            ]);
+        }
+// return 'fghjk'; 
+        Cart::where('user_id', $userId)->delete();
+
+        // return 'kolchi tchera';
         return redirect()->route('orders');
     }
 

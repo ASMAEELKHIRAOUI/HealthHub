@@ -69,7 +69,7 @@
             
             <hr>
             <div class="d-flex justify-content-center">
-                <button class="add btn big_btn text-light rounded fs-5">CHECKOUT</button>
+                <a href="{{ route('checkout') }}"><button class="add btn big_btn text-light rounded fs-5" type="submit">CHECKOUT</button></a>
             </div>
             
             
