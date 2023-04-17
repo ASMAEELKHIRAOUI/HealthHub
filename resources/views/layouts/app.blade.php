@@ -49,7 +49,7 @@
                                                     @endphp
                                                     @foreach ($subcategories as $subcategory)
                                                         <li>
-                                                            <a href="#" class="subcategory text-dark">
+                                                            <a href="{{ route('filterCategory',$subcategory->name) }}" class="subcategory text-dark">
                                                                 {{ $subcategory->name }}
                                                             </a>
                                                         </li>
@@ -201,8 +201,9 @@
     </nav>
     <searchbar class="row mb-2">
         <div class="col-lg-4 col-sm-1 col-md-2"></div>
-        <form class="d-flex col-lg-4 col-sm-10 col-md-8 pt-5" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="{{ route('product.search') }}" method="get" class="d-flex col-lg-4 col-sm-10 col-md-8 pt-5" role="search">
+            {{-- @csrf --}}
+            <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
         </form>
     </searchbar>

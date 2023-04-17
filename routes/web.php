@@ -84,6 +84,8 @@ Route::controller(AuthController::class)->group(function () {
             Route::get('/{product}', 'edit')->middleware(['permission:edit product'])->name('products.edit');
             Route::put('/{product}', 'update')->middleware(['permission:edit product'])->name('products.update');
             Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('products.destroy');
+            Route::get('category/{filter}','filterCategory')->name('filterCategory');
+            // Route::get('/search', 'search')->name('product.search');
         });
         Route::group(['controller' => UserController::class, 'prefix' => 'profile'], function () {
             Route::get('', 'index')->middleware(['permission:view profile']);
@@ -102,3 +104,5 @@ Route::controller(AuthController::class)->group(function () {
         });
     });
 });
+
+Route::get('/search', [ProductController::class, 'search'])->name('product.search');

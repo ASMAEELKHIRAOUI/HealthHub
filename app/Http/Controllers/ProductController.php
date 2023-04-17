@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreproductRequest;
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests\UpdateproductRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,30 @@ class ProductController extends Controller
         $user = Auth::user();
         return view('details',compact('product','user'));
     }
+
+    public function filterCategory($filter){
+
+        $product=Product::join("categories","categories.id","=","products.category_id")
+                          ->where("categories.name","=",$filter)->select("products.*")->get();
+        
+        return view('welcome')->with('products', $product);
+  
+    }
+
+    public function search(SearchRequest $request)
+    {
+        $search = $request->input('search'); // Get the search keyword from the request
+// dd($search);
+        // Use Eloquent to query the products table for name or description containing the search keyword
+        $products = Product::where('name', 'LIKE', '%' . $search . '%')
+                        ->orWhere('description', 'LIKE', '%' . $search . '%')
+                        ->select("products.*")
+                        ->get();
+        // return $products;
+        // Pass the search results to the view
+        return view('welcome')->with('products', $products);
+    }
+
 
     /**
      * Show the form for creating a new resource.
