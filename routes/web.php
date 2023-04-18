@@ -38,8 +38,9 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 Route::get('/', [ProductController::class, 'index'])->name('welcome');
 Route::get('details/{product}', [ProductController::class, 'details'])->name('product.detail');
+Route::get('orders/orderdetails/{order}', [OrderController::class, 'details'])->name('order.detail');
 Route::get('checkout', [CartController::class, 'index'])->name('checkout');
-// Route::get('cart', [CartController::class, 'index'])->name('cart');
+Route::get('cart', [CartController::class, 'index'])->name('cart');
 
 
 Route::controller(AuthController::class)->group(function () {
@@ -69,6 +70,9 @@ Route::controller(AuthController::class)->group(function () {
         Route::group(['controller' => OrderController::class], function () {
             Route::get('orders', 'index')->name('orders');
             Route::post('orders', 'store')->middleware(['permission:add order'])->name('orders.store');
+            Route::get('/{order}', 'edit')->middleware(['permission:edit order'])->name('orders.edit');
+            Route::put('/{order}', 'update')->middleware(['permission:edit order'])->name('orders.update');
+            Route::delete('/{order}', 'destroy')->middleware(['permission:delete order'])->name('orders.destroy');
             // Route::put('orders/{order}', 'update')->middleware(['permission:edit order']);
             // Route::delete('orders/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
         });
@@ -94,7 +98,7 @@ Route::controller(AuthController::class)->group(function () {
             Route::delete('', 'destroy');
         });
         Route::group(['controller' => CartController::class], function () {
-            Route::get('cart', 'index')->name('cart');
+            // Route::get('cart', 'index')->name('cart');
             Route::post('cart', 'store')->name('cart.store');
         });
 

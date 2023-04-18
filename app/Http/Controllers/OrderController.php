@@ -22,6 +22,12 @@ class OrderController extends Controller
         return view('orders')->with('orders', $orders);
     }
 
+    public function details(Order $order)
+    {
+        return view('orderdetails',compact('order'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -90,7 +96,8 @@ class OrderController extends Controller
      */
     public function edit(order $order)
     {
-        //
+        $userId = Auth::user()->id;
+        return view('orderedit', ['order' => $order, 'userId' => $userId]);
     }
 
     /**

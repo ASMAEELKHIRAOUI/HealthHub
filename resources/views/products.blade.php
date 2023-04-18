@@ -49,7 +49,7 @@
                                         <i class="fa fa-trash text-danger"></i>
                                     </button>
                                 </form>
-                                </td>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

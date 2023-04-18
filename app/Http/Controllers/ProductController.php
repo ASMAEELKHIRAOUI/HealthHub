@@ -19,7 +19,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        $user = Auth::user();
 
         if (Route::currentRouteName() == 'welcome'){
             return view('welcome')->with('products', $products);
