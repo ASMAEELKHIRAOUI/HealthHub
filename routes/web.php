@@ -100,6 +100,7 @@ Route::controller(AuthController::class)->group(function () {
         Route::group(['controller' => CartController::class], function () {
             // Route::get('cart', 'index')->name('cart');
             Route::post('cart', 'store')->name('cart.store');
+            Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
         });
 
         Route::group(['controller' => RoleController::class], function () {

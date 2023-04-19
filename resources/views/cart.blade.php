@@ -15,7 +15,13 @@
                     </div>
                     <div class="col-2 fs-4 d-flex justify-content-center mt-3">{{ ($cart->product->price - (($cart->product->promotion * $cart->product->price)/100)) * $cart->quantity }}$</div>
                     <div class="col-1 d-flex justify-content-center mt-4">
-                        <i class="fa fa-trash text-danger fs-4"></i>
+                        <form action="{{ route('cart.destroy',$cart->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">
+                                <i class="fa fa-trash text-danger fs-4"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <hr class="w-75">
