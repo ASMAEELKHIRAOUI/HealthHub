@@ -2,6 +2,14 @@
 <div class="py-5">
     <div class="mb-4">
         <label class="my-1">
+            Date and time:
+        </label>
+        <h5>
+            {{ $order->created_at}}
+        </h5>
+    </div>
+    <div class="mb-4">
+        <label class="my-1">
             Full Name:
         </label>
         <h5>

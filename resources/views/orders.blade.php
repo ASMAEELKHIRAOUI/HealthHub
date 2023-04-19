@@ -20,6 +20,7 @@
                             <th class="text-right">Status</th>
                             <th class="text-right">Products</th>
                             <th class="text-right">Total</th>
+                            <th class="text-right">Date/Time</th>
                             <th class="text-left"></th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@
                                     @endforeach
                                 </td>
                                 <td class="text-right">{{ $sum }}$</td>
+                                <td class="text-right">{{ $order->created_at }}</td>
                                 <td class="text-left d-flex justify-content-end">
                                     <a class="text-dark me-3" href="{{ route('order.detail', $order->id) }}">details</a>
                                     <form action="{{ route('orders.destroy',$order->id) }}" method="POST">

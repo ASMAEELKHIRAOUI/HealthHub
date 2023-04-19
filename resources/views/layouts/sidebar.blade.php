@@ -9,25 +9,24 @@
                     <a href="{{ url('/') }}" class="text-white text-decoration-none"><img class="logo" src="img/logo.png" style="height:50px; width:170px;"></a>
                 </li>
                 <li class="active has-sub">
-                    <a href="{{ url('/') }}" class="text-white text-decoration-none">
+                    <a href="{{ url('dashboard') }}" class="text-white text-decoration-none">
                         <i class="fa fa-home"></i>Home</a>
                 </li>
-                <li class="active has-sub">
+                {{-- <li class="active has-sub">
                     <a href="{{ url('dashboard') }}" class="text-white text-decoration-none">
                     <i class="fa-solid fa-chart-simple"></i>Statistics</a>
-                </li>
-                <li class="active has-sub">
-                    <a href="{{ url('products') }}" class="text-white text-decoration-none">
-                    <i class="fa-solid fa-bottle-droplet"></i>Products List</a>
-                </li>
-                <li>
-                    <a href="{{ url('brands') }}" class="text-white text-decoration-none"><i class="fa fa-tag fa-rotate-90"></i>Brands List</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ url('categories') }}" class="text-white text-decoration-none">
                     <i class="bi bi-stack"></i>Categories List</a>
                 </li>
-                
+                <li class="active has-sub">
+                    <a href="{{ url('products') }}" class="text-white text-decoration-none">
+                    <i class="fa-solid fa-bottle-droplet"></i>Products List</a>
+                </li>                
+                <li>
+                    <a href="{{ url('brands') }}" class="text-white text-decoration-none"><i class="fa fa-tag fa-rotate-90"></i>Brands List</a>
+                </li>
                 <li>
                     <a href="{{ url('orders') }}" class="text-white text-decoration-none">
                     <i class="fa-solid fa-box-open"></i>Orders List</a>

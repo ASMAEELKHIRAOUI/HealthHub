@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'statistics'])->name('dashboard');
 // Route::get('/cart', function () {
 //     return view('cart');
 // })->name('cart');
