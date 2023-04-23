@@ -12,28 +12,27 @@
                     <a href="{{ url('dashboard') }}" class="text-white text-decoration-none">
                         <i class="fa fa-home"></i>Home</a>
                 </li>
-                {{-- <li class="active has-sub">
-                    <a href="{{ url('dashboard') }}" class="text-white text-decoration-none">
-                    <i class="fa-solid fa-chart-simple"></i>Statistics</a>
-                </li> --}}
                 <li>
-                    <a href="{{ url('categories') }}" class="text-white text-decoration-none">
+                    <a href="{{ route('category.index') }}" class="text-white text-decoration-none">
                     <i class="bi bi-stack"></i>Categories List</a>
                 </li>
                 <li class="active has-sub">
-                    <a href="{{ url('products') }}" class="text-white text-decoration-none">
+                    <a href="{{ route('product.index') }}" class="text-white text-decoration-none">
                     <i class="fa-solid fa-bottle-droplet"></i>Products List</a>
                 </li>                
                 <li>
-                    <a href="{{ url('brands') }}" class="text-white text-decoration-none"><i class="fa fa-tag fa-rotate-90"></i>Brands List</a>
+                    <a href="{{ route('brand.index') }}" class="text-white text-decoration-none"><i class="fa fa-tag fa-rotate-90"></i>Brands List</a>
                 </li>
                 <li>
-                    <a href="{{ url('orders') }}" class="text-white text-decoration-none">
+                    <a href="{{ route('order.index') }}" class="text-white text-decoration-none">
                     <i class="fa-solid fa-box-open"></i>Orders List</a>
                 </li>
 
                 <li>
-                    <a href="../scripts.php/logout.script.php?&action=logOut" class="text-white text-decoration-none"><i class="fa fa-sign-out text-white"></i>Log out</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="text-white text-decoration-none"><i class="fa fa-sign-out text-white"></i>Log out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -57,25 +56,25 @@
             <div class="offcanvas-body" id="color">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="{{ url('/') }}"><i class="fa fa-home me-2"></i>Home</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ url('/dashboard') }}"><i class="fa fa-home me-2"></i>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="#statistics"><i class="fa-solid fa-chart-simple me-2"></i>Statistics</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ route('category.index') }}"><i class="bi bi-stack me-2"></i>Categories list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="#products-list"><i class="fa-solid fa-bottle-droplet me-2"></i>Products list</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ route('product.index') }}"><i class="fa-solid fa-bottle-droplet me-2"></i>Products list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="#brands-list"><i class="fa fa-tag fa-rotate-90 me-2"></i>Brands list</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ route('brand.index') }}"><i class="fa fa-tag fa-rotate-90 me-2"></i>Brands list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="#categories-list"><i class="bi bi-stack me-2"></i>Categories list</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ url('order.index') }}"><i class="fa-solid fa-box-open me-2"></i>Orders list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="#orders-list"><i class="fa-solid fa-box-open me-2"></i>Orders list</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="../scripts.php/logout.script.php?&action=logOut"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>    
                     </li>
                 </ul>
             </div>

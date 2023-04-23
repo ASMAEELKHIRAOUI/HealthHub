@@ -4,8 +4,6 @@
         <div class="col-lg-12">
             <div class="overview-wrap">
                 <h2 class="title-1 m-b-25 me-4" id="orders-list">Orders</h2>
-                {{-- <button class="btn big_btn me-3 logup text-light  rounded fs-5" href="#orderModal" data-bs-toggle="modal" id="color">
-                <i class="fa fa-plus fs-5 me-2"></i>Add order</button> --}}
             </div>
             <br>
             <div class="table-responsive table--no-card mb-4">
@@ -45,9 +43,9 @@
                                 <td class="text-right">{{ $sum }}$</td>
                                 <td class="text-right">{{ $order->created_at }}</td>
                                 <td class="text-left d-flex justify-content-end">
-                                    <a class="text-dark me-3" href="{{ route('order.detail', $order->id) }}">details</a>
-                                    <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
-                                        <a href="{{ route('orders.edit',$order->id) }}">
+                                    <a class="text-dark me-3" href="{{ route('order.details', $order->id) }}">details</a>
+                                    <form action="{{ route('order.destroy',$order->id) }}" method="POST">
+                                        <a href="{{ route('order.edit',$order->id) }}">
                                             <i class="fa fa-edit text-primary me-2"></i>
                                         </a>
                                         @csrf

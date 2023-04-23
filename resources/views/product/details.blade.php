@@ -7,7 +7,7 @@
     <div class="d-flex row">
         
         <div class="col-6">
-            <img src="img/products/{{ $product->img }}" style="height: 500px; width: 500px;" class="rounded-4 ms-5">
+            <img src="../img/products/{{ $product->img }}" style="height: 500px; width: 500px;" class="rounded-4 ms-5">
         </div>
         <div class="col-6 my-5">
             <h3>

@@ -37,8 +37,8 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'stat
 // })->name('cart');
 
 Route::get('/', [ProductController::class, 'index'])->name('welcome');
-Route::get('details/{product}', [ProductController::class, 'details'])->name('product.detail');
-Route::get('orders/orderdetails/{order}', [OrderController::class, 'details'])->name('order.detail');
+Route::get('details/{product}', [ProductController::class, 'details'])->name('product.details');
+Route::get('orders/orderdetails/{order}', [OrderController::class, 'details'])->name('order.details');
 Route::get('checkout', [CartController::class, 'index'])->name('checkout');
 Route::get('cart', [CartController::class, 'index'])->name('cart');
 
@@ -54,25 +54,25 @@ Route::controller(AuthController::class)->group(function () {
         //     Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('product.destroy');
         // });
         Route::group(['controller' => BrandController::class, 'prefix' => 'brands'], function () {
-            Route::get('', 'index')->name('brands');
-            Route::post('', 'store')->middleware(['permission:add brand'])->name('brands.store');
-            Route::get('/{brand}', 'edit')->middleware(['permission:edit brand'])->name('brands.edit');
-            Route::put('/{brand}', 'update')->middleware(['permission:edit brand'])->name('brands.update');
-            Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brands.destroy');
+            Route::get('', 'index')->name('brand.index');
+            Route::post('', 'store')->middleware(['permission:add brand'])->name('brand.store');
+            Route::get('/{brand}', 'edit')->middleware(['permission:edit brand'])->name('brand.edit');
+            Route::put('/{brand}', 'update')->middleware(['permission:edit brand'])->name('brand.update');
+            Route::delete('/{brand}', 'destroy')->middleware(['permission:delete brand'])->name('brand.destroy');
         });
         Route::group(['controller' => CategoryController::class, 'prefix' => 'categories'], function () {
-            Route::get('', 'index')->name('categories');
-            Route::post('', 'store')->middleware(['permission:add category'])->name('categories.store');
+            Route::get('', 'index')->name('category.index');
+            Route::post('', 'store')->middleware(['permission:add category'])->name('category.store');
             Route::get('/{category}', 'edit')->middleware(['permission:edit category'])->name('category.edit');
             Route::put('/{category}', 'update')->middleware(['permission:edit category'])->name('category.update');
             Route::delete('/{category}', 'destroy')->middleware(['permission:delete category'])->name('category.destroy');
         });
         Route::group(['controller' => OrderController::class], function () {
-            Route::get('orders', 'index')->name('orders');
-            Route::post('orders', 'store')->middleware(['permission:add order'])->name('orders.store');
-            Route::get('/{order}', 'edit')->middleware(['permission:edit order'])->name('orders.edit');
-            Route::put('/{order}', 'update')->middleware(['permission:edit order'])->name('orders.update');
-            Route::delete('/{order}', 'destroy')->middleware(['permission:delete order'])->name('orders.destroy');
+            Route::get('orders', 'index')->name('order.index');
+            Route::post('orders', 'store')->middleware(['permission:add order'])->name('order.store');
+            Route::get('/{order}', 'edit')->middleware(['permission:edit order'])->name('order.edit');
+            Route::put('/{order}', 'update')->middleware(['permission:edit order'])->name('order.update');
+            Route::delete('/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
             // Route::put('orders/{order}', 'update')->middleware(['permission:edit order']);
             // Route::delete('orders/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
         });
@@ -83,11 +83,11 @@ Route::controller(AuthController::class)->group(function () {
         //     // Route::delete('orders/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
         // });
         Route::group(['controller' => ProductController::class, 'prefix' => 'products'], function () {
-            Route::get('', 'index')->name('products');
-            Route::post('', 'store')->middleware(['permission:add product'])->name('products.store');
-            Route::get('/{product}', 'edit')->middleware(['permission:edit product'])->name('products.edit');
-            Route::put('/{product}', 'update')->middleware(['permission:edit product'])->name('products.update');
-            Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('products.destroy');
+            Route::get('', 'index')->name('product.index');
+            Route::post('', 'store')->middleware(['permission:add product'])->name('product.store');
+            Route::get('/{product}', 'edit')->middleware(['permission:edit product'])->name('product.edit');
+            Route::put('/{product}', 'update')->middleware(['permission:edit product'])->name('product.update');
+            Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('product.destroy');
             Route::get('category/{filter}','filterCategory')->name('filterCategory');
             // Route::get('/search', 'search')->name('product.search');
         });

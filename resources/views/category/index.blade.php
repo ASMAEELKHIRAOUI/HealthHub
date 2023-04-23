@@ -1,5 +1,5 @@
 @include('layouts.sidebar')
-@include('categoriesmodal')
+@include('category.modal')
 <div class="p-5" style="height: 100vh">
 <div class="row">
     <div class="col-lg-12">

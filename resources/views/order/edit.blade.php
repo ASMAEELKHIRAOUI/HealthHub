@@ -2,7 +2,7 @@
 
 
 <div class="edit-modal-content p-5">
-    <form action="{{ route('orders.update', $order) }}" method="POST" id="add-form" data-parsley-validate>
+    <form action="{{ route('order.update', $order) }}" method="POST" id="add-form" data-parsley-validate>
     @csrf
     @method('PUT')
         <div class="modal-header">

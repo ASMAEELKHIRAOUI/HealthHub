@@ -1,5 +1,5 @@
 @include('layouts.sidebar')
-@include('brandsmodal')
+@include('brand.modal')
 <div class="p-5" style="height: 100vh">
     <div class="row">
     <div class="col-lg-12">
@@ -24,8 +24,8 @@
                         <td class="text-right"><img style="width:5rem" src="/img/brands/{{ $brand->img }}"> </td>
                         <td class="text-right">{{ $brand->name }}</td>
                         <td class="text-left d-flex justify-content-end">
-                            <form action="{{ route('brands.destroy',$brand->id) }}" method="POST">
-                                <a href="{{ route('brands.edit',$brand->id) }}">
+                            <form action="{{ route('brand.destroy',$brand->id) }}" method="POST">
+                                <a href="{{ route('brand.edit',$brand->id) }}">
                                     <i class="fa fa-edit text-primary me-2"></i>
                                 </a>
                                 @csrf

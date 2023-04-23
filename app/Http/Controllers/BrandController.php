@@ -16,7 +16,7 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::all();
-        return view('brands')->with('brands', $brands);
+        return view('brand.index')->with('brands', $brands);
     }
 
     /**
@@ -26,7 +26,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('brands');
+        return view('brand.index');
     }
 
     /**
@@ -48,7 +48,7 @@ class BrandController extends Controller
         Brand::create($input);
 
 
-        return redirect()->route('brands');
+        return redirect()->route('brand.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class BrandController extends Controller
      */
     public function show(brand $brand)
     {
-        return view('brands', compact('brand'));
+        return view('brand.index', compact('brand'));
     }
 
     /**
@@ -70,7 +70,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('brandsedit', ['brand' => $brand]);
+        return view('brand.edit', ['brand' => $brand]);
     }
 
 
@@ -91,7 +91,7 @@ class BrandController extends Controller
         } else unset($input['img']);
         $brand->update($input);
 
-        return redirect()->route('brands')->with('success', 'Brand updated successfully');
+        return redirect()->route('brand.index')->with('success', 'Brand updated successfully');
     }
 
     /**
@@ -104,6 +104,6 @@ class BrandController extends Controller
     {
         $brand->delete();
 
-        return redirect()->route('brands')->with('success', 'Brand deleted successfully');
+        return redirect()->route('brand.index')->with('success', 'Brand deleted successfully');
     }
 }

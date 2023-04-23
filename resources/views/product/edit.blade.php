@@ -1,6 +1,6 @@
 @include('layouts.sidebar')
 <div class="edit-modal-content p-5">
-    <form action="{{ route('products.update', $product) }}" method="POST" id="edit-form" enctype="multipart/form-data" data-parsley-validate>
+    <form action="{{ route('product.update', $product) }}" method="POST" id="edit-form" enctype="multipart/form-data" data-parsley-validate>
         @csrf
         @method('PUT')
 

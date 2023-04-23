@@ -1,5 +1,5 @@
 @include('layouts.sidebar')
-@include('productmodal')
+@include('product.modal')
 
 <div class="p-5" style="height: 100vh">
 <div class="row">
@@ -39,8 +39,8 @@
                             <td class="text-right">{{ $product->stock }}</td>
                             <td class="text-right">{{ $product->price }}</td>
                             <td class="text-left">
-                                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                                    <a href="{{ route('products.edit',$product->id) }}">
+                                <form action="{{ route('product.destroy',$product->id) }}" method="POST">
+                                    <a href="{{ route('product.edit',$product->id) }}">
                                         <i class="fa fa-edit text-primary me-2"></i>
                                     </a>
                                     @csrf

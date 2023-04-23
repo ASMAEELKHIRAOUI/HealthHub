@@ -2,7 +2,7 @@
 <div class="modal fade" id="productModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('products.store')}}" method="POST" id="add-form" enctype="multipart/form-data" data-parsley-validate>
+            <form action="{{route('product.store')}}" method="POST" id="add-form" enctype="multipart/form-data" data-parsley-validate>
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title">Add product</h5>

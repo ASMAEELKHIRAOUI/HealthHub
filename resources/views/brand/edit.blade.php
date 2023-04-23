@@ -2,7 +2,7 @@
 
 {{-- @dd($brand) --}}
 <div class="edit-modal-content p-5">
-    <form action="{{ route('brands.update', $brand) }}" method="POST" id="edit-form" data-parsley-validate>
+    <form action="{{ route('brand.update', $brand) }}" method="POST" id="edit-form" data-parsley-validate>
 
         @csrf
         @method('PUT')

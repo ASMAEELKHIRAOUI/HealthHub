@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $categories= Category::all()->where('type',1);
         $subcategories= Category::with('category')->where('type',2)->get();
-        return view('categories',compact('categories' ,'subcategories'));
+        return view('category.index',compact('categories' ,'subcategories'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories');
+        return view('category.index');
     }
 
     /**
@@ -42,7 +42,7 @@ class CategoryController extends Controller
         Category::create($input);
         
 
-        return redirect()->route('categories');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -53,7 +53,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories',compact('category'));
+        return view('category.index',compact('category'));
     }
 
     /**
@@ -64,7 +64,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categoriesedit', ['category' => $category]);
+        return view('category.edit', ['category' => $category]);
     }
 
     /**
@@ -79,7 +79,7 @@ class CategoryController extends Controller
         $input = $request->all();
         $category->update($input);
       
-        return redirect()->route('categories')->with('success','Category updated successfully');
+        return redirect()->route('category.index')->with('success','Category updated successfully');
     }
 
     /**
@@ -92,6 +92,6 @@ class CategoryController extends Controller
     {
         $category->delete();
        
-        return redirect()->route('categories')->with('success','Category deleted successfully');
+        return redirect()->route('category.index')->with('success','Category deleted successfully');
     }
 }

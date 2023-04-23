@@ -23,13 +23,13 @@ class ProductController extends Controller
         if (Route::currentRouteName() == 'welcome'){
             return view('welcome')->with('products', $products);
         }
-        return view('products')->with('products', $products);
+        return view('product.index')->with('products', $products);
     }
 
     public function details(product $product)
     {
         $user = Auth::user();
-        return view('details',compact('product','user'));
+        return view('product.details',compact('product','user'));
     }
 
     public function filterCategory($filter){
@@ -63,7 +63,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products');
+        return view('product.index');
     }
 
     /**
@@ -87,7 +87,7 @@ class ProductController extends Controller
         Product::create($input);
         
 
-        return redirect()->route('products');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        return view('products',compact('product'));
+        return view('product.index',compact('product'));
     }
 
     /**
@@ -109,7 +109,7 @@ class ProductController extends Controller
      */
     public function edit(product $product)
     {
-        return view('productsedit', ['product' => $product]);
+        return view('product.edit', ['product' => $product]);
     }
 
     /**
@@ -129,7 +129,7 @@ class ProductController extends Controller
         }else unset($input['image']);
         $product->update($input);
       
-        return redirect()->route('products')->with('success','Product updated successfully');
+        return redirect()->route('product.index')->with('success','Product updated successfully');
     }
 
     /**
@@ -142,6 +142,6 @@ class ProductController extends Controller
     {
         $product->delete();
     
-        return redirect()->route('products')->with('success','Product deleted successfully');
+        return redirect()->route('product.index')->with('success','Product deleted successfully');
     }
 }

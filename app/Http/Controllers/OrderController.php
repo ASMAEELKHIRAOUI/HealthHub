@@ -19,12 +19,12 @@ class OrderController extends Controller
     public function index()
     {
         $orders= Order::all();
-        return view('orders')->with('orders', $orders);
+        return view('order.index')->with('orders', $orders);
     }
 
     public function details(Order $order)
     {
-        return view('orderdetails',compact('order'));
+        return view('order.details',compact('order'));
     }
 
 
@@ -35,7 +35,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('orders');
+        return view('order.index');
     }
 
     /**
@@ -74,7 +74,7 @@ class OrderController extends Controller
         Cart::where('user_id', $userId)->delete();
 
         // return 'kolchi tchera';
-        return redirect()->route('orders');
+        return redirect()->route('order.index');
     }
 
     /**
@@ -85,7 +85,7 @@ class OrderController extends Controller
      */
     public function show(order $order)
     {
-        return view('orders',compact('order'));
+        return view('order.index',compact('order'));
     }
 
     /**
@@ -97,7 +97,7 @@ class OrderController extends Controller
     public function edit(order $order)
     {
         $userId = Auth::user()->id;
-        return view('orderedit', ['order' => $order, 'userId' => $userId]);
+        return view('order.edit', ['order' => $order, 'userId' => $userId]);
     }
 
     /**
@@ -112,7 +112,7 @@ class OrderController extends Controller
         $input = $request->all();
         $order->update($input);
       
-        return redirect()->route('orders')->with('success','Order updated successfully');
+        return redirect()->route('order.index')->with('success','Order updated successfully');
     }
 
     /**
@@ -125,6 +125,6 @@ class OrderController extends Controller
     {
         $order->delete();
        
-        return redirect()->route('orders')->with('success','Order deleted successfully');
+        return redirect()->route('order.index')->with('success','Order deleted successfully');
     }
 }
