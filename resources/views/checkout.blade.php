@@ -5,7 +5,7 @@
     <div class="d-flex row">
         <div class="col-9 d-flex row mt-5 justify-content-center">
                     <div class="modal-content">
-                        <form action="{{ route('orders.store') }}" method="POST" id="add-form" data-parsley-validate>
+                        <form action="{{ route('order.store') }}" method="POST" id="add-form" data-parsley-validate>
                             @csrf
                             <div class="modal-body">
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">

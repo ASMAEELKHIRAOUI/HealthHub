@@ -15,76 +15,55 @@
     
     
 <!-- cursouel  -->
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
+<div class="container">
+  {{-- <h2>Our  Partners</h2> --}}
+   <section class="customer-logos slider">
+    @php
+                    $brands = App\Models\Brand::all();
+                    @endphp
+                    @foreach ($brands as $brand)
+                    <div class="slide"><img src="img/brands/{{ $brand->img }}"></div>
+                    @endforeach
 
-
-{{-- <div class="container-fluid">
-    <h1>Use Bootstrap's carousel to show multiple items per slide.</h1>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="carousel slide multi-item-carousel" id="theCarousel">
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/f44336/000000" class="img-responsive" style="width:100%; height:auto"></a></div>
-            </div>
-            <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/e91e63/000000" class="img-responsive" style="width:100%; height:auto"></a></div>
-            </div>
-            <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/9c27b0/000000" class="img-responsive" style="width:100%; height:auto"></a></div>
-            </div>
-            <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/673ab7/000000" class="img-responsive" style="width:100%; height:auto"></a></div>
-            </div>
-            <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/4caf50/000000" class="img-responsive" style="width:100%; height:auto"></a></div>
-            </div>
-            <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive" style="width:100%; height:auto"></a></div>
-            </div>
-            <!-- add  more items here -->
-            <!-- Example item start:  -->
-            
-            <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive" style="width:100%; height:auto"></a></div>
-            </div>
-            
-            <!--  Example item end -->
-          </div>
-          <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-          <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+      {{-- <div class="slide"><img src="img/brands/{{ $brand->img }}"></div> --}}
+      {{-- <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg"></div> --}}
+     
+   </section>
+</div>
 <script>
-    // Instantiate the Bootstrap carousel
-$('.multi-item-carousel').carousel({
-  interval: false
+  $(document).ready(function(){
+    $('.customer-logos').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        arrows: false,
+        dots: false,
+        pauseOnHover: false,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 4
+            }
+        }, {
+            breakpoint: 520,
+            settings: {
+                slidesToShow: 3
+            }
+        }]
+    });
 });
-// for every slide in carousel, copy the next slide's item in the slide.
-// Do the same for the next, next item.
-
-
-$('.multi-item-carousel .item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
-  
-  if (next.next().length>0) {
-    next.next().children(':first-child').clone().appendTo($(this));
-  } else {
-  	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-  }
-});
-  
-
-</script>
-
-
- --}}
+</script>   
 
 {{-- 
 <div class="container my-5"> 
