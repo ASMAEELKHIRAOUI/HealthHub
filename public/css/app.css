@@ -984,3 +984,7 @@ ul {
 .color:hover{
     color:#70a673;
 }
+body{
+    min-width: 100vw;
+    background-color: black !important;
+}

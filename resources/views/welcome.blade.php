@@ -1,22 +1,25 @@
 @extends('layouts.footer')
 @extends('layouts.app')
 @section('content')
-<div class="land d-flex">
-  <img src="img/woman.png" alt="">
+<div class="land d-flex flex-column justify-content-lg-center flex-lg-row" id="hehehehe" >
+  <div class="d-flex justify-content-center" id="tsweradlhome">
+    <img src="img/woman.png" alt="">
+  </div>
   <div class="d-flex align-items-center">
-    <p>
-      Explore the alluring universe of online parapharmacy with <span  style="font-weight:bold;">HealthHub</span> , your ultimate digital destination for top-notch health and wellness solutions.
+    <p class="px-4 text-center">
+      Explore the alluring universe of online parapharmacy with <span  style="font-weight:bold;">HealthHub</span> Your ultimate digital destination for top-notch health and wellness solutions.
     </p>
   </div>
 </div>
-<searchbar class="row mb-2">
+{{-- search --}}
+<div class="row mb-2 w-75 m-auto">
   <div class="col-lg-2 col-sm-1 col-md-2"></div>
   <form action="{{ route('product.search') }}" method="get" class="d-flex col-lg-8 col-sm-10 col-md-8" role="search">
       @csrf
       <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
   </form>
-</searchbar>
+</div>
 <div class="d-flex row pt-5" id="landingPage">
   <h2 class="text-center p-5" style="font-family: 'Rockwell', Helvetica, sans-serif;">Our Products</h2>
     @foreach ($products as $product)

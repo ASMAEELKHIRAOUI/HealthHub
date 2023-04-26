@@ -4,12 +4,12 @@
 <div class="container p-5">
     <form action="{{route('cart.store')}}" method="POST">
         @csrf
-    <div class="d-flex row">
+    <div class="d-flex flex-wrap justify-content-between">
         
-        <div class="col-6">
-            <img src="../img/products/{{ $product->img }}" style="height: 500px; width: 500px;" class="rounded-4 ms-5">
+        <div class="">
+            <div   style="width: 450px;height: 450px ;background-image: url('../img/products/{{ $product->img }}'); background-size: cover; background-position: center; background-repeat: no-repeat;" class="rounded-4 ms-5 section3"></div>
         </div>
-        <div class="col-6 my-5">
+        <div class=" my-5 section4">
             <h3>
                 {{ $product->name }}
             </h3>

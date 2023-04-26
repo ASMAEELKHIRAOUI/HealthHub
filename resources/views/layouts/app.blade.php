@@ -9,7 +9,14 @@
         <nav class="navbar" style="height:70px;">
             <div class="container-fluid">
                 <div>
-                    <button class="btn text-white fw-light px-5" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling">Categories</i>
+                    
+                    <button  class="btn text-white" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling">
+                        <i class="bi bi-hdd-stack-fill d-md-none"></i>
+                        <span class="d-none d-md-inline btn big_btn text-white">
+                            Categories
+                        </span>
+                        
                     </button>
 
                     <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
@@ -47,7 +54,8 @@
                                                     @endphp
                                                     @foreach ($subcategories as $subcategory)
                                                         <li>
-                                                            <a href="{{ route('filterCategory',$subcategory->name) }}" class="subcategory text-dark">
+                                                            <a href="{{ route('filterCategory', $subcategory->name) }}"
+                                                                class="subcategory text-dark">
                                                                 {{ $subcategory->name }}
                                                             </a>
                                                         </li>
@@ -65,56 +73,59 @@
 
                     </div>
                 </div>
-                <div><a href="{{ url('/') }}"><img class="logo" src="img/logo.png"
-                    style="height:50px; width:170px;"></a></div>
-                    <div class="justify-content-end" id="navbarColor01">
-                        <div class="btn-group">
-                            <div class="d-flex">
-                                @guest
-                                    @if (Route::has('login'))
-                                        <div class="nav-item">
-                                            <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                        </div>
-                                    @endif
-        
-                                    @if (Route::has('register'))
-                                        <div class="nav-item ms-2">
-                                            <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                        </div>
-                                    @endif
-                                @else
-                                    <a href="{{ route('cart') }}" class="fs-2 text-white"><i class="bi bi-cart-dash"></i></a>
-                                    <div class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-light m-3" href="#"
-                                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            v-pre>
-                                            {{ Auth::user()->name }}
-                                        </a>
-        
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                            @if (Auth::user()->hasRole('admin'))
-                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
-                                            @endif
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-        
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </div>
-                                @endguest
+                <div><a href="{{ url('/') }}">
+                    <img class="logo d-none d-sm-inline" src="{{asset('img/logo.png')}}"
+                            style="height:50px; width:170px;" ></i></a></div>
+                <div class="justify-content-end" id="navbarColor01">
+                    <div class="btn-group">
+                        <div class="d-flex flex-row align-items-center pe-4">
+                            @guest
+                                
+                            @if (Route::has('register'))
+                            <div class="nav-item me-2">
+                                <a class="nav-link text-light"
+                                    href="{{ route('register') }}">{{ __('Register') }}</a>
                             </div>
-                            {{-- <img src="pp.png" class="pp rounded-circle btn dropdown-toggle text-light mt-1 ms-2" style="height:45px; width:75px;" type="button" data-bs-toggle="dropdown" aria-expanded="false"> --}}
-                            <?php
-                            // if(isset($_SESSION["UserName"]))
-                            // echo $_SESSION["UserName"];
-                            ?>
-                            {{-- </button> --}}
-                            {{-- <ul class="dropdown-menu">
+                            @endif
+                                @if (Route::has('login'))
+                                    <div class="nav-item badge bg-white text-black">
+                                        <a class="nav-link fw-normal fs-6 p-1 " href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </div>
+                                @endif
+                            @else
+                                <a href="{{ route('cart') }}" class="fs-2 text-white"><i class="bi bi-cart-dash"></i></a>
+                                <div class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-light m-3" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        @if (Auth::user()->hasRole('admin'))
+                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                        @endif
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+                            @endguest
+                        </div>
+                        {{-- <img src="pp.png" class="pp rounded-circle btn dropdown-toggle text-light mt-1 ms-2" style="height:45px; width:75px;" type="button" data-bs-toggle="dropdown" aria-expanded="false"> --}}
+                        <?php
+                        // if(isset($_SESSION["UserName"]))
+                        // echo $_SESSION["UserName"];
+                        ?>
+                        {{-- </button> --}}
+                        {{-- <ul class="dropdown-menu">
                                     <li><button class="dropdown-item" type="button">Settings</button></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -125,8 +136,8 @@
                                         </form>
                                     </li>
                                 </ul> --}}
-                        </div>
                     </div>
+                </div>
             </div>
 
 

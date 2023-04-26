@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'statistics'])->name('dashboard');
+// Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'statistics'])->middleware(['permission:add category'])->name('dashboard');
 // Route::get('/cart', function () {
 //     return view('cart');
 // })->name('cart');
@@ -47,6 +47,7 @@ Route::get('cart', [CartController::class, 'index'])->name('cart');
 
 
 Route::controller(AuthController::class)->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'statistics'])->middleware(['permission:add category'])->name('dashboard');
     // Route::get('categories', 'index');
     Route::get('categories/{category}', 'show');
     Route::middleware('auth:web')->group(function () {
