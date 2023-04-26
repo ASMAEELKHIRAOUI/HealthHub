@@ -9,6 +9,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,14 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+Route::get('/search', [ProductController::class, 'search'])->name('product.search');
+
+
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
 });
-
 
 
 Auth::routes();
@@ -110,4 +113,3 @@ Route::controller(AuthController::class)->group(function () {
     });
 });
 
-Route::get('/search', [ProductController::class, 'search'])->name('product.search');

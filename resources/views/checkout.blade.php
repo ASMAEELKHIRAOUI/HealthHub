@@ -38,8 +38,8 @@
 
                             </div>
                             <div class="modal-footer d-flex justify-content-around my-5">
-                                <a href="#" class="btn btn-white border rounded" style="width: 400px">Digital Payment</a>
-                                <button type="submit" name="SaveOrder" class="btn btn-white border rounded" style="width: 400px">Cash on Delivery</button>
+                                {{-- <a href="#" class="btn btn-white border rounded" style="width: 400px">Digital Payment</a> --}}
+                                <button type="submit" name="SaveOrder" class="btn btn-white border rounded" style="width: 400px">Submit (Cash on Delivery)</button>
                             </div>
                         </form>
                     </div>

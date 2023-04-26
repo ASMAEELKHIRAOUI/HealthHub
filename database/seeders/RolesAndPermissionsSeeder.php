@@ -80,25 +80,25 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Define roles available
         $admin = 'admin';
-        $seller = 'seller';
+        // $seller = 'seller';
         $user = 'user';
 
         Role::create(['name' => $admin])->givePermissionTo(Permission::all());
 
-        Role::create(['name' => $seller])->givePermissionTo([
-            $addProduct,
-            $editProduct,
-            $deleteProduct,
-            $viewProfile,
-            $placeOrder,
-            $viewOwnOrder_archive,
-            $viewAllOrders_archives,
-            $viewOwnCart,
-            $viewAllCarts,
-            $addOrder,
-            $editOrder,
-            $deleteOrder,
-        ]);
+        // Role::create(['name' => $seller])->givePermissionTo([
+        //     $addProduct,
+        //     $editProduct,
+        //     $deleteProduct,
+        //     $viewProfile,
+        //     $placeOrder,
+        //     $viewOwnOrder_archive,
+        //     $viewAllOrders_archives,
+        //     $viewOwnCart,
+        //     $viewAllCarts,
+        //     $addOrder,
+        //     $editOrder,
+        //     $deleteOrder,
+        // ]);
 
         Role::create(['name' => $user])->givePermissionTo([
             $viewProfile,

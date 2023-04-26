@@ -55,7 +55,7 @@
                     <input type="number" value="1" min="1" max="{{ $product->stock }}" class="rounded p-2" name="quantity">
                 </div>
                 <div class="">
-                    <button class="add btn me-3 text-light rounded fs-5" type="submit">Add to cart <i class="bi bi-cart-dash"></i></button>
+                    <button class="add btn me-3 text-light rounded fs-5 w-100" type="submit">Add to cart <i class="bi bi-cart-dash"></i></button>
                 </div>
             </div>
         </div>

@@ -996,10 +996,10 @@ ul {
 .add{
     background-color: #70a673;
 }
-h2{
+/* h2{
     text-align:center;
     padding: 20px;
-  }
+  } */
   /* Slider */
   
   .slick-slide {
@@ -1115,4 +1115,21 @@ h2{
   }
   .slick-arrow.slick-hidden {
       display: none;
+  }
+  .land{
+    background: linear-gradient(180deg, rgba(112,166,115,1) 18%, rgba(189,174,143,1) 50%, rgba(255,255,255,1) 83%);
+    height: 100vh;
+
+  }
+  .land img{
+    height: 95vh;
+    -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+  .land p{
+    font: 400 40px/0.8 'dancing script', Helvetica, sans-serif;
+    line-height: 60px;
+  }
+  .delete-btn{
+    background: none; 
+    border:none;
   }

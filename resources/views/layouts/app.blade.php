@@ -9,15 +9,13 @@
         <nav class="navbar" style="height:70px;">
             <div class="container-fluid">
                 <div>
-                    <button class="btn text-white" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
-                            class="bi bi-list fs-3"></i>
+                    <button class="btn text-white fw-light px-5" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling">Categories</i>
                     </button>
 
                     <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
                         id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                         <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu</h5>
+                            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Categories</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                 aria-label="Close"></button>
                         </div>
@@ -94,6 +92,9 @@
                                         </a>
         
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            @if (Auth::user()->hasRole('admin'))
+                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                            @endif
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
@@ -134,14 +135,14 @@
 
     </div>
     </nav>
-    <searchbar class="row mb-2">
+    {{-- <searchbar class="row mb-2">
         <div class="col-lg-4 col-sm-1 col-md-2"></div>
         <form action="{{ route('product.search') }}" method="get" class="d-flex col-lg-4 col-sm-10 col-md-8 pt-5" role="search">
-            {{-- @csrf --}}
+            @csrf
             <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
         </form>
-    </searchbar>
+    </searchbar> --}}
 
 
 

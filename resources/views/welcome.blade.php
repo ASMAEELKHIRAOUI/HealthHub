@@ -1,7 +1,24 @@
 @extends('layouts.footer')
 @extends('layouts.app')
 @section('content')
-<div class="d-flex row my-3 pt-5" id="landingPage">
+<div class="land d-flex">
+  <img src="img/woman.png" alt="">
+  <div class="d-flex align-items-center">
+    <p>
+      Explore the alluring universe of online parapharmacy with <span  style="font-weight:bold;">HealthHub</span> , your ultimate digital destination for top-notch health and wellness solutions.
+    </p>
+  </div>
+</div>
+<searchbar class="row mb-2">
+  <div class="col-lg-2 col-sm-1 col-md-2"></div>
+  <form action="{{ route('product.search') }}" method="get" class="d-flex col-lg-8 col-sm-10 col-md-8" role="search">
+      @csrf
+      <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+  </form>
+</searchbar>
+<div class="d-flex row pt-5" id="landingPage">
+  <h2 class="text-center p-5" style="font-family: 'Rockwell', Helvetica, sans-serif;">Our Products</h2>
     @foreach ($products as $product)
     <a class="col-3 justify-items-center pb-12 text-dark" id="cards" href="{{ route('product.details',$product->id) }}">
         <div class="card text-center pb-2 my-2">
@@ -18,26 +35,18 @@
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+{{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
 
 <div class="container">
-  {{-- <h2>Our  Partners</h2> --}}
-   <section class="customer-logos slider">
+  
+  <h2 class="text-center p-5" style="font-family: 'Rockwell', Helvetica, sans-serif;">Our Brands</h2>
+   <section class="customer-logos slider my-4">
     @php
                     $brands = App\Models\Brand::all();
                     @endphp
                     @foreach ($brands as $brand)
                     <div class="slide"><img src="img/brands/{{ $brand->img }}"></div>
                     @endforeach
-
-      {{-- <div class="slide"><img src="img/brands/{{ $brand->img }}"></div> --}}
-      {{-- <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"></div>
-      <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg"></div>
-      <div class="slide"><img src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg"></div>
-      <div class="slide"><img src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg"></div>
-      <div class="slide"><img src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg"></div>
-      <div class="slide"><img src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg"></div> --}}
-     
    </section>
 </div>
 <script>
@@ -65,41 +74,4 @@
 });
 </script>   
 
-{{-- 
-<div class="container my-5"> 
-                
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row mx-auto ">
-                    @php
-                    $brands = App\Models\Brand::all();
-                    @endphp
-                    @foreach ($brands as $brand)
-                        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-                            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-                            <img src="img/brands/{{ $brand->img }}" class="card-img-top">
-                            </div>
-                        </div> 
-                    @endforeach
-                        
-                    </div>  
-
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class=" text-dark carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div> --}}
 @endsection

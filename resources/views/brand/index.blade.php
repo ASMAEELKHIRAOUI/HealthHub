@@ -30,7 +30,7 @@
                                 </a>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">
+                                <button type="submit" class="delete-btn">
                                     <i class="fa fa-trash text-danger"></i>
                                 </button>
                             </form>

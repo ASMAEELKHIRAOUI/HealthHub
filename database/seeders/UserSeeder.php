@@ -20,11 +20,11 @@ class UserSeeder extends Seeder
                 $user->assignRole('admin');
             }
         );
-        User::factory()->count(2)->create()->each(
-            function($user){
-                $user->assignRole('seller');
-            }
-        );
+        // User::factory()->count(2)->create()->each(
+        //     function($user){
+        //         $user->assignRole('seller');
+        //     }
+        // );
         User::factory()->count(4)->create()->each(
             function($user){
                 $user->assignRole('user');
