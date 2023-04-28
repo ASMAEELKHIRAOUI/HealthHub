@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="overview-wrap">
-                <h2 class="title-1 m-b-25 me-4" id="orders-list">Orders</h2>
+                <h2 class="title-1 m-b-25 me-4 mt-4" id="orders-list">Orders</h2>
             </div>
             <br>
             <div class="table-responsive table--no-card mb-4">

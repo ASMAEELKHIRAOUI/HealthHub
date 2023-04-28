@@ -24,7 +24,6 @@ class StorecartRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' =>'required',
             'product_id' =>'required',
             'quantity' =>'required'
         ];

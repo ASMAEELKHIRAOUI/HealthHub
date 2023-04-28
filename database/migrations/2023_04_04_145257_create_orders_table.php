@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('address');
             $table->unsignedBigInteger('status_id')->nullable();
             $table->foreign('status_id')->references('id')->on('statuses');
-            //payement mode and payement id
             $table->timestamps();
         });
     }

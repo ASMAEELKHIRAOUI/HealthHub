@@ -74,7 +74,7 @@ class OrderController extends Controller
         Cart::where('user_id', $userId)->delete();
 
         // return 'kolchi tchera';
-        return redirect()->route('order.index');
+        return redirect()->route('profile');
     }
 
     /**

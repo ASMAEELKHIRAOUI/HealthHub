@@ -17,7 +17,6 @@
                 {{ $product->brand->name }}
             </h4>
             <input type="hidden" value="{{ $product->id }}" name="product_id">
-            <input type="hidden" value="{{ $user->id }}" name="user_id">
             <hr>
             @if($product->promotion > 0)
             <div class="d-flex justify-content-between">

@@ -16,22 +16,25 @@
   <div class="col-lg-2 col-sm-1 col-md-2"></div>
   <form action="{{ route('product.search') }}" method="get" class="d-flex col-lg-8 col-sm-10 col-md-8" role="search">
       @csrf
-      <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+      <input class="form-control me-2 border border-3 border-success" type="text" name="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
   </form>
 </div>
 <div class="d-flex row pt-5" id="landingPage">
   <h2 class="text-center p-5" style="font-family: 'Rockwell', Helvetica, sans-serif;">Our Products</h2>
+  <div class="row mx-auto">
     @foreach ($products as $product)
-    <a class="col-3 justify-items-center pb-12 text-dark" id="cards" href="{{ route('product.details',$product->id) }}">
-        <div class="card text-center pb-2 my-2">
-            <img src="img/products/{{ $product->img }}" alt="" style="height:300px;width:275px;border-radius:20px" class="p-2">
+    <a class="col-md-6 col-lg-4 col-xl-3 p-2 col-12 text-dark" id="cards" href="{{ route('product.details',$product->id) }}">
+        <div class="card d-flex justify-content-center text-center pb-2 my-2">
+            <img src="img/products/{{ $product->img }}" style="height:300px;width:100%;border-radius:20px" class="p-2">
             <h1 class="fs-2">{{ $product->name }}</h1>
             <p class="">{{ $product->description }}</p>
             <p class="">{{ $product->price - (($product->promotion * $product->price)/100) }}$</p>
         </div>
     </a>
     @endforeach
+  </div>
+    
     
     
 <!-- cursouel  -->

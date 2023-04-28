@@ -68,7 +68,7 @@
                         <a class="nav-link active text-light" aria-current="page" href="{{ route('brand.index') }}"><i class="fa fa-tag fa-rotate-90 me-2"></i>Brands list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="{{ url('order.index') }}"><i class="fa-solid fa-box-open me-2"></i>Orders list</a>
+                        <a class="nav-link active text-light" aria-current="page" href="{{ route('order.index') }}"><i class="fa-solid fa-box-open me-2"></i>Orders list</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active text-light" aria-current="page" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out text-white me-2"></i>Log out</a>

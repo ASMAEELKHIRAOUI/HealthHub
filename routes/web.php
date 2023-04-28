@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
+// use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
@@ -27,7 +28,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('product.searc
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
+    // Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
 });
 
@@ -47,7 +48,9 @@ Route::get('cart', [CartController::class, 'index'])->name('cart');
 
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'statistics'])->middleware(['permission:add category'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'statistics'])->middleware(['permission:add category'])->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::get('categories', 'index');
     Route::get('categories/{category}', 'show');
     Route::middleware('auth:web')->group(function () {
@@ -95,12 +98,12 @@ Route::controller(AuthController::class)->group(function () {
             Route::get('category/{filter}','filterCategory')->name('filterCategory');
             // Route::get('/search', 'search')->name('product.search');
         });
-        Route::group(['controller' => UserController::class, 'prefix' => 'profile'], function () {
-            Route::get('', 'index')->middleware(['permission:view profile']);
-            Route::put('updateNameEmail/{user}', 'updateNameEmail');
-            Route::put('updatePassword', 'updatePassword');
-            Route::delete('', 'destroy');
-        });
+        // Route::group(['controller' => UserController::class, 'prefix' => 'profile'], function () {
+        //     Route::get('', 'index')->middleware(['permission:view profile']);
+        //     Route::put('updateNameEmail/{user}', 'updateNameEmail');
+        //     Route::put('updatePassword', 'updatePassword');
+        //     Route::delete('', 'destroy');
+        // });
         Route::group(['controller' => CartController::class], function () {
             // Route::get('cart', 'index')->name('cart');
             Route::post('cart', 'store')->name('cart.store');

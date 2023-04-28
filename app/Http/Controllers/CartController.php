@@ -50,7 +50,7 @@ class CartController extends Controller
     public function store(StorecartRequest $request)
     {
         $input = $request->all();
-        Cart::create($input);
+        $request->user()->cart()->create($input);
         
 
         return redirect()->route('cart');
