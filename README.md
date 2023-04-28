@@ -4,4 +4,6 @@ L'UML:
 
  * Diagramme de séquences: https://lucid.app/lucidchart/bca45b9c-26c1-4d67-b97d-264972f9f8bb/edit?viewport_loc=-244%2C857%2C2160%2C1074%2C0_0&invitationId=inv_f283f9e8-1202-4e15-abd3-8f6fb6039442
  
-  * Cas d'utilisateur: 
+  * Cas d'utilisateur:
+  
+![UseCaseDiagram1](https://user-images.githubusercontent.com/112881449/235136024-50e750a3-bf01-4a57-95b6-95171513d772.jpg)
