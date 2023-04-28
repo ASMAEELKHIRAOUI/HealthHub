@@ -49,14 +49,9 @@
                         </thead>
                         <tbody>
                             @php
-                                $items = App\Models\OrderItems::with('order.user')
-    ->whereHas('order.user', function ($query) {
-        $query->where('id', Illuminate\Support\Facades\Auth::user()->id);
-    })
-    ->get();
-                                // dd($items);
-                            @endphp        
-                            @foreach ($items as $item)
+                                $items = App\Models\OrderItems::with('order.user')->whereHas('order.user', function ($query) {$query->where('id', Illuminate\Support\Facades\Auth::user()->id);})->get();
+                            @endphp  
+                            @forelse ($items as $item)
                                 <tr>
                                     <td class="text-right"><img src="img/products/{{ $item->product->img }}" alt="" style="height:50px; width:50px;"></td>
                                     <td class="text-right">{{ $item->product->name }}</td>
@@ -65,7 +60,9 @@
                                     <td class="text-right">{{ $item->total }}</td>
                                     <td class="text-right">{{ $item->order->status->name }}</td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <h2>There is no orders here, try placing one!</h2>
+                            @endforelse      
                         </tbody>
                     </table>
                 </div>

@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $order)
+                        @forelse ($orders as $order)
                             <tr>
                                 <td class="text-right">{{ $order->fullName }}</td>
                                 <td class="text-right">{{ $order->email }}</td>
@@ -56,7 +56,9 @@
                                     </form>
                                     </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <h2 class="text-center">No orders here, I guess you'll have to wait</h2>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

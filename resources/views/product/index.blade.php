@@ -27,8 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                         <tr>
                             <td class="text-right"><img src="img/products/{{ $product->img }}" alt="" style="height:50px; width:50px;"></td>
                             <td class="text-right">{{ $product->name }}</td>
@@ -51,7 +50,9 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <h2 class="text-center">There is no products, try adding one!</h2>
+                    @endforelse
                 </tbody>
             </table>
         </div>
