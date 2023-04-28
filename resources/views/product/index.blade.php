@@ -1,7 +1,7 @@
 @include('layouts.sidebar')
 @include('product.modal')
 
-<div class="p-5" style="height: 100vh">
+<div class="p-5">
 <div class="row">
     <div class="col-lg-12">
         <div class="overview-wrap">

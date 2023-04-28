@@ -10,7 +10,7 @@
         <div class="row">
           <!-- Grid column -->
           <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <img class="logo" src="img/logo.png" style="height:50px; width:170px;">
+          <img class="logo" src="{{asset('img/logo.png')}}" style="height:50px; width:170px;">
           </div>
           <!-- Grid column -->
 

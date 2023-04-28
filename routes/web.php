@@ -54,12 +54,6 @@ Route::controller(AuthController::class)->group(function () {
     // Route::get('categories', 'index');
     Route::get('categories/{category}', 'show');
     Route::middleware('auth:web')->group(function () {
-        // Route::group(['controller' => ProductController::class, 'prefix' => 'products'], function () {
-        //     Route::get('', 'index')->name('products');
-        //     Route::post('', 'store')->middleware(['permission:add product'])->name('products.store');
-        //     Route::put('/{product}', 'update')->middleware(['permission:edit product']);
-        //     Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('product.destroy');
-        // });
         Route::group(['controller' => BrandController::class, 'prefix' => 'brands'], function () {
             Route::get('', 'index')->name('brand.index');
             Route::post('', 'store')->middleware(['permission:add brand'])->name('brand.store');
@@ -80,15 +74,7 @@ Route::controller(AuthController::class)->group(function () {
             Route::get('/{order}', 'edit')->middleware(['permission:edit order'])->name('order.edit');
             Route::put('/{order}', 'update')->middleware(['permission:edit order'])->name('order.update');
             Route::delete('/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
-            // Route::put('orders/{order}', 'update')->middleware(['permission:edit order']);
-            // Route::delete('orders/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
         });
-        // Route::group(['controller' => OrderItemsController::class], function () {
-        //     // Route::get('orders', 'index')->name('orders');
-        //     Route::post('/', 'store')->middleware(['permission:add order'])->name('orders.store');
-        //     // Route::put('orders/{order}', 'update')->middleware(['permission:edit order']);
-        //     // Route::delete('orders/{order}', 'destroy')->middleware(['permission:delete order'])->name('order.destroy');
-        // });
         Route::group(['controller' => ProductController::class, 'prefix' => 'products'], function () {
             Route::get('', 'index')->name('product.index');
             Route::post('', 'store')->middleware(['permission:add product'])->name('product.store');
@@ -96,16 +82,8 @@ Route::controller(AuthController::class)->group(function () {
             Route::put('/{product}', 'update')->middleware(['permission:edit product'])->name('product.update');
             Route::delete('/{product}', 'destroy')->middleware(['permission:delete product'])->name('product.destroy');
             Route::get('category/{filter}','filterCategory')->name('filterCategory');
-            // Route::get('/search', 'search')->name('product.search');
         });
-        // Route::group(['controller' => UserController::class, 'prefix' => 'profile'], function () {
-        //     Route::get('', 'index')->middleware(['permission:view profile']);
-        //     Route::put('updateNameEmail/{user}', 'updateNameEmail');
-        //     Route::put('updatePassword', 'updatePassword');
-        //     Route::delete('', 'destroy');
-        // });
         Route::group(['controller' => CartController::class], function () {
-            // Route::get('cart', 'index')->name('cart');
             Route::post('cart', 'store')->name('cart.store');
             Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
         });
